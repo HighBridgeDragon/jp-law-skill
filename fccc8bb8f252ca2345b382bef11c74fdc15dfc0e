@@ -1,0 +1,23 @@
+.markdownlint.json
+  55624fd380c1e847 4-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "fccc8bb8f252ca2345b382bef11c74fdc15dfc0e",
+  "prompts": {
+    "55624fd380c1e847": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "982d2a6e-ea18-47e2-8441-aa90ff340ef1",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 1,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
