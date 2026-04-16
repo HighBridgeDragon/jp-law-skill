@@ -1,0 +1,23 @@
+.gitignore
+  0ea8737bc5327f1c 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "b8105bab0f2ab05e4522c13265de0f9958a57302",
+  "prompts": {
+    "0ea8737bc5327f1c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ebf9ceb-2c24-419e-bc44-dcf916e48b41",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
