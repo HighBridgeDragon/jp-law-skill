@@ -19,7 +19,7 @@ e-Gov法令API V2経由で日本の法令を調査する。認証不要。同梱
 
 ユーザーの要求に応じて適切なエンドポイントを選ぶ:
 
-```
+```text
 「○○法の第X条を見せて」
   → law-aliases.md で law_id を引く
   → bash scripts/fetch-law.sh {law_id} MainProvision-Article_X
@@ -137,7 +137,7 @@ bash scripts/search-keyword.sh 損害賠償 10
 
 法令情報をユーザーに提示する際の推奨フォーマット:
 
-```
+```text
 【法令名】○○法（law_id: XXXXX）
 【条文】第X条（第Y項）
 【内容】
@@ -148,7 +148,7 @@ bash scripts/search-keyword.sh 損害賠償 10
 
 改正履歴を提示する場合:
 
-```
+```text
 【法令名】○○法
 【改正履歴】（直近N件）
 - YYYY-MM-DD: ○○法の一部を改正する法律（令和X年法律第X号）
