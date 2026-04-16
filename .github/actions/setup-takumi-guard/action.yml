@@ -1,0 +1,8 @@
+name: Setup Takumi Guard
+description: サプライチェーン保護のため Takumi Guard by GMO をセットアップ（バージョン一元管理）
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Takumi Guard
+      uses: flatt-security/setup-takumi-guard-npm@v1
