@@ -37,6 +37,10 @@ e-Gov法令API V2経由で日本の法令を調査する。認証不要。同梱
 「○○法の全文を取得して」
   → bash scripts/fetch-law.sh {law_id}
   ※ 大規模法令は全文取得を避け、elm パラメータで条文単位取得を推奨
+
+「○○法の2020年時点の条文を見せて」
+  → bash scripts/fetch-law.sh {law_id} MainProvision-Article_X
+  ※ スクリプトのURLに ?asof=2020-01-01 を手動付与
 ```
 
 ## 各エンドポイントの使い方
@@ -105,7 +109,7 @@ bash scripts/search-keyword.sh 損害賠償 10
 法令全文は非常に大きい（民法: 数万行）。以下を守ること:
 
 1. **条文単位で取得する**: `elm=MainProvision-Article_709` のように `elm` パラメータを常に使う
-2. **必要な条文だけ取得する**: 「第709条から第724条まで」のような範囲指定はできないため、1条ずつ取得する
+2. **必要な条文だけ取得する**: 条文単位で1条ずつ取得する。ただし `elm` でChapter/Section等の上位要素を指定すれば、配下の複数条文をまとめて取得可能（例: `elm=MainProvision-Chapter_3` で章全体）
 3. **検索→特定→取得の順序**: まず `/laws` や `/keyword` で該当法令・条文を特定してから `/law_data` で取得
 4. **全文取得は最終手段**: ユーザーが明示的に全文を要求した場合のみ
 
@@ -132,6 +136,7 @@ bash scripts/search-keyword.sh 損害賠償 10
 4. **キーワード検索のlimit**: `/keyword` の `limit` は法令件数ではなく条文位置数の総和の上限
 5. **日付パラメータ**: `asof` で過去の時点の法令を取得可能（`YYYY-MM-DD` 形式）
 6. **法令番号でも検索可能**: `/law_data` のパスパラメータには law_id 以外に法令番号も指定可能
+7. **Base64に注意**: `law_full_text_format` と `response_format` を異なる値にすると `law_full_text` がBase64エンコードで返却される。通常はどちらも既定値（json）のまま使用すること
 
 ## 出力フォーマット
 
