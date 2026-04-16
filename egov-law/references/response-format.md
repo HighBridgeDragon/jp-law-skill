@@ -5,7 +5,7 @@ description: law_full_textのtag/attr/children再帰構造とタグ一覧
 
 # law_full_text レスポンス構造リファレンス
 
-`/law_data/{law_revision_id}` エンドポイントが返すJSONの `law_full_text` フィールドの構造。
+`/law_data/{law_id_or_num_or_revision_id}` エンドポイントが返すJSONの `law_full_text` フィールドの構造。
 
 ## レスポンス全体の構造
 
