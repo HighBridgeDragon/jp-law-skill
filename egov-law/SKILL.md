@@ -39,8 +39,8 @@ e-Gov法令API V2経由で日本の法令を調査する。認証不要。同梱
   ※ 大規模法令は全文取得を避け、elm パラメータで条文単位取得を推奨
 
 「○○法の2020年時点の条文を見せて」
-  → bash scripts/fetch-law.sh {law_id} MainProvision-Article_X
-  ※ スクリプトのURLに ?asof=2020-01-01 を手動付与
+  → curl -s "https://laws.e-gov.go.jp/api/2/law_data/{law_id}?elm=MainProvision-Article_X&asof=2020-01-01"
+  ※ elm なしの場合: ?asof=2020-01-01 のみ
 ```
 
 ## 各エンドポイントの使い方

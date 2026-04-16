@@ -15,8 +15,8 @@ fi
 
 URL="https://laws.e-gov.go.jp/api/2/law_data/${LAW_ID}"
 if [ -n "$ELM" ]; then
-  ENCODED_ELM="${ELM//[/%5B}"
-  ENCODED_ELM="${ENCODED_ELM//]/%5D}"
+  ENCODED_ELM="${ELM//\[/%5B}"
+  ENCODED_ELM="${ENCODED_ELM//\]/%5D}"
   URL="${URL}?elm=${ENCODED_ELM}"
 fi
 
