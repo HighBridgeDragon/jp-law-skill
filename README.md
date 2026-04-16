@@ -41,6 +41,30 @@ npx skills add HighBridgeDragon/egov-law-skill
 
 - `mcp-server-fetch`（APIの呼び出しに使用、認証不要）
 
+## 開発者向け
+
+### 法令ID検証
+
+`egov-law/references/law-aliases.md`に記載された全法令IDの有効性を検証できます:
+
+```bash
+cd egov-law
+bash scripts/validate-law-ids.sh
+```
+
+詳細は [egov-law/docs/validate-law-ids.md](egov-law/docs/validate-law-ids.md) を参照してください。
+
+### スクリプト一覧
+
+- `fetch-law.sh` - 法令本文データ取得
+- `fetch-revisions.sh` - 改正履歴取得
+- `search-laws.sh` - 法令名検索
+- `search-keyword.sh` - キーワード検索
+- `validate-law-ids.sh` - 法令ID検証
+- `extract-law-ids.sh` - 法令ID一覧抽出
+
+詳細は [egov-law/scripts/README.md](egov-law/scripts/README.md) を参照してください。
+
 ## e-Gov法令API V2
 
 - [公式サイト](https://laws.e-gov.go.jp/)
