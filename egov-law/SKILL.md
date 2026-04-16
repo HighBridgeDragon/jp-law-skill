@@ -6,14 +6,14 @@ license: MIT
 
 # e-Gov 法令調査スキル
 
-e-Gov法令API V2経由で日本の法令を調査する。認証不要。`mcp-server-fetch` でREST APIを呼び出す。
+e-Gov法令API V2経由で日本の法令を調査する。認証不要。同梱スクリプト（`scripts/`）でAPIを呼び出す。
 
 ## 基本ルール
 
 - Base URL: `https://laws.e-gov.go.jp/api/2`
 - レスポンス形式: JSON（既定）
 - 認証: 不要
-- 呼び出し方法: `fetch` ツール（mcp-server-fetch）でGETリクエスト
+- 呼び出し方法: `bash scripts/<script>.sh` で実行（curl のみ依存、外部ツール不要）
 
 ## エンドポイント選択
 
@@ -22,47 +22,49 @@ e-Gov法令API V2経由で日本の法令を調査する。認証不要。`mcp-s
 ```
 「○○法の第X条を見せて」
   → law-aliases.md で law_id を引く
-  → GET /law_data/{law_id}?elm=MainProvision-Article_X
+  → bash scripts/fetch-law.sh {law_id} MainProvision-Article_X
 
 「○○に関する法律を探して」
-  → GET /laws?law_title=○○
+  → bash scripts/search-laws.sh ○○
 
 「△△というキーワードを含む条文を探して」
-  → GET /keyword?keyword=△△
+  → bash scripts/search-keyword.sh △△
 
 「○○法の改正履歴を調べて」
   → law-aliases.md で law_id を引く
-  → GET /law_revisions/{law_id}
+  → bash scripts/fetch-revisions.sh {law_id}
 
 「○○法の全文を取得して」
-  → GET /law_data/{law_id}
+  → bash scripts/fetch-law.sh {law_id}
   ※ 大規模法令は全文取得を避け、elm パラメータで条文単位取得を推奨
 ```
 
 ## 各エンドポイントの使い方
 
-### 1. 法令検索 — GET /laws
+### 1. 法令検索 — search-laws.sh
 
 法令名で検索し、law_id を特定する。
 
-```
-fetch https://laws.e-gov.go.jp/api/2/laws?law_title=個人情報保護&limit=5
+```bash
+bash scripts/search-laws.sh 個人情報保護 5
+# Usage: bash scripts/search-laws.sh <law_title> [limit]
 ```
 
-主要パラメータ: `law_title`(法令名), `law_type`(種別), `category_cd`(分類コード), `limit`, `offset`
+主要パラメータ: `law_title`(法令名), `limit`(件数、既定10)
 
 レスポンスの `laws[].law_info.law_id` が法令ID。詳細は [api-reference.md](references/api-reference.md) 参照。
 
-### 2. 法令本文取得 — GET /law_data/{law_id_or_num_or_revision_id}
+### 2. 法令本文取得 — fetch-law.sh
 
 法令の全文または特定条文を取得する。
 
-```
+```bash
 # 民法第709条のみ取得（トークン節約）
-fetch https://laws.e-gov.go.jp/api/2/law_data/129AC0000000089?elm=MainProvision-Article_709
+bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_709
 
 # 民法全文（注意: 大量データ）
-fetch https://laws.e-gov.go.jp/api/2/law_data/129AC0000000089
+bash scripts/fetch-law.sh 129AC0000000089
+# Usage: bash scripts/fetch-law.sh <law_id> [elm]
 ```
 
 **elm パラメータで条文を絞り込む**（ハイフン区切りで階層指定）:
@@ -76,20 +78,22 @@ fetch https://laws.e-gov.go.jp/api/2/law_data/129AC0000000089
 
 レスポンスの `law_full_text` はtag/attr/children再帰構造。解析方法は [response-format.md](references/response-format.md) 参照。
 
-### 3. 改正履歴 — GET /law_revisions/{law_id_or_num}
+### 3. 改正履歴 — fetch-revisions.sh
 
-```
-fetch https://laws.e-gov.go.jp/api/2/law_revisions/129AC0000000089
+```bash
+bash scripts/fetch-revisions.sh 129AC0000000089
+# Usage: bash scripts/fetch-revisions.sh <law_id>
 ```
 
 `revisions[]` 配列に改正履歴が新しい順で格納される。`law_revision_id` を使って特定時点の法令本文を取得可能。
 
-### 4. キーワード検索 — GET /keyword
+### 4. キーワード検索 — search-keyword.sh
 
 法令本文中のキーワードを全文検索する。
 
-```
-fetch https://laws.e-gov.go.jp/api/2/keyword?keyword=損害賠償&limit=10
+```bash
+bash scripts/search-keyword.sh 損害賠償 10
+# Usage: bash scripts/search-keyword.sh <keyword> [limit]
 ```
 
 - `keyword` は必須。`AND`, `OR`, `NOT`, ワイルドカード(`*`, `?`)対応
