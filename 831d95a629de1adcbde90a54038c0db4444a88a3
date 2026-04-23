@@ -1,0 +1,41 @@
+egov-law/docs/validation-results.md
+  h_0f6270f0076e2a 3-4,12-13,23-58,62,66,70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "831d95a629de1adcbde90a54038c0db4444a88a3",
+  "prompts": {
+    "1102278e222b6791": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "02cc0bd1-1448-4fe7-8016-338a6e8b7132",
+        "model": "copilot/auto"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 24,
+      "overriden_lines": 0
+    },
+    "b4c03b662a260d6b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99554131-a56e-43fc-b11d-a97d3d4ab356",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 213,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_0f6270f0076e2a": {
+      "author": "Ryo Takahashi"
+    }
+  }
+}
