@@ -49,8 +49,9 @@ TOTAL=0
 SUCCESS=0
 FAILED=0
 FAILED_IDS=""
+LAW_ID_COUNT=$(printf "%s\n" "$LAW_IDS" | awk 'NF {count++} END {print count + 0}')
 
-echo "検証対象: $(echo "$LAW_IDS" | wc -l) 件の法令ID"
+echo "検証対象: ${LAW_ID_COUNT} 件の法令ID"
 echo ""
 
 # 各law_idを検証
@@ -61,11 +62,12 @@ for LAW_ID in $LAW_IDS; do
   URL="${API_BASE}/law_revisions/${LAW_ID}"
 
   # HTTPステータスコードと応答内容を取得
-  HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" "$URL")
+  RESPONSE_FILE=$(mktemp)
+  HTTP_CODE=$(curl -s -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
 
   if [ "$HTTP_CODE" = "200" ]; then
     # 法令名を取得（簡易的なJSONパース、jq不要）
-    LAW_TITLE=$(grep -o '"law_title":"[^"]*"' /tmp/response.json 2>/dev/null | sed 's/"law_title":"//' | sed 's/"$//' | head -1)
+    LAW_TITLE=$(grep -o '"law_title"[[:space:]]*:[[:space:]]*"[^"]*"' "$RESPONSE_FILE" 2>/dev/null | sed -E 's/"law_title"[[:space:]]*:[[:space:]]*"//; s/"$//' | head -1 || true)
     if [ -z "$LAW_TITLE" ]; then
       LAW_TITLE="（法令名取得失敗）"
     fi
@@ -74,15 +76,17 @@ for LAW_ID in $LAW_IDS; do
     SUCCESS=$((SUCCESS + 1))
   else
     # エラーレスポンスを取得
-    ERROR_MSG=$(grep -o '"message":"[^"]*"' /tmp/response.json 2>/dev/null | sed 's/"message":"//' | sed 's/"$//' | head -1)
+    ERROR_MSG=$(grep -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' "$RESPONSE_FILE" 2>/dev/null | sed -E 's/"message"[[:space:]]*:[[:space:]]*"//; s/"$//' | head -1 || true)
     if [ -z "$ERROR_MSG" ]; then
       ERROR_MSG="（応答なし）"
     fi
 
     echo -e "${RED}[NG]${NC} ${LAW_ID} - HTTP ${HTTP_CODE} - ${ERROR_MSG}"
     FAILED=$((FAILED + 1))
-    FAILED_IDS="${FAILED_IDS}${LAW_ID}\n"
+    FAILED_IDS="${FAILED_IDS}${LAW_ID}"$'\n'
   fi
+
+  rm -f "$RESPONSE_FILE"
 
   # APIへの負荷を軽減するため、短い間隔をあける
   sleep 0.5
@@ -100,7 +104,7 @@ echo -e "${RED}失敗: ${FAILED}${NC}"
 if [ $FAILED -gt 0 ]; then
   echo ""
   echo "失敗したlaw_id:"
-  echo -e "${FAILED_IDS}"
+  printf "%s" "${FAILED_IDS}"
   exit 1
 else
   echo ""
