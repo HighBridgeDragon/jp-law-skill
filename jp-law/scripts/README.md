@@ -148,7 +148,7 @@ bash scripts/extract-law-ids.sh
 
 ## 関連ドキュメント
 
-- [法令ID検証手順](../docs/validate-law-ids.md) - 詳細な検証手順
+- [法令ID検証手順](../../docs/validate-law-ids.md) - 詳細な検証手順
 - [主要法令エイリアス](../references/law-aliases.md) - 法令ID一覧
 - [API リファレンス](../references/api-reference.md) - e-Gov API V2の詳細
 
@@ -168,4 +168,4 @@ law_idが無効な場合:
 2. search-laws.shで正しいlaw_idを検索
 3. e-Gov APIの仕様変更を確認
 
-詳細は [docs/validate-law-ids.md](../docs/validate-law-ids.md) を参照してください。
+詳細は [docs/validate-law-ids.md](../../docs/validate-law-ids.md) を参照してください。

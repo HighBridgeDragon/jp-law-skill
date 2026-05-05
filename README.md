@@ -52,7 +52,7 @@ cd jp-law
 bash scripts/validate-law-ids.sh
 ```
 
-詳細は [jp-law/docs/validate-law-ids.md](jp-law/docs/validate-law-ids.md) を参照してください。
+詳細は [docs/validate-law-ids.md](docs/validate-law-ids.md) を参照してください。
 
 ### スクリプト一覧
 

@@ -107,7 +107,7 @@ bash scripts/validate-law-ids.sh
 
 ### 4. 結果を記録
 
-`jp-law/docs/validation-results.md`を更新して、検証結果を記録します:
+`docs/validation-results.md`を更新して、検証結果を記録します:
 
 ```markdown
 ## 検証結果サマリー
@@ -131,7 +131,7 @@ bash scripts/validate-law-ids.sh
 修正をコミットしてPRを作成します:
 
 ```bash
-git add jp-law/references/law-aliases.md jp-law/docs/validation-results.md
+git add jp-law/references/law-aliases.md docs/validation-results.md
 git commit -m "fix: correct invalid law_id for [法令名]"
 git push
 ```
