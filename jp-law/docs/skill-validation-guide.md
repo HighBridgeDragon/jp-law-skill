@@ -34,8 +34,9 @@ node --version   # >= v24.0.0 を確認
 npm --version
 ```
 
-bash 環境（macOS/Linux）の場合は `eval "$(fnm env --use-on-cd)"` で
-シェルにフックを注入したうえで `fnm use 24` を実行してください。
+bash 環境（macOS/Linux）の場合は `eval "$(fnm env --use-on-cd --shell bash)"` で
+シェルにフックを注入したうえで `fnm use 24` を実行してください
+（`--shell bash` を明示することでシェル自動判定に頼らず確実にフックが注入される）。
 
 ## 実行コマンド一覧
 
