@@ -19,7 +19,7 @@
 ## 前提環境
 
 | 項目 | バージョン / 値 | 備考 |
-|------|------|------|
+| --- | --- | --- |
 | OS | Windows 11 / macOS / Linux | 本ガイドは Windows + PowerShell を主に記述 |
 | Node.js | v24.15.0 | fnm 経由で固定 |
 | npm | 11.12.1 | Node.js 同梱 |
@@ -129,7 +129,7 @@ wc -l jp-law/SKILL.md
 ## 失敗時の対応指針
 
 | 失敗パターン | 想定される原因 | 対応 |
-|---|---|---|
+| --- | --- | --- |
 | `skills-ref validate` が non-zero | frontmatter 破損、必須フィールド欠落 | SKILL.md 修正は別 Issue で扱い、本検証では FAIL を記録 |
 | `name` 命名規則 NG | 大文字混入、64 字超過 | 別 Issue 起票し、SKILL.md 改修 PR を分離 |
 | ディレクトリ名と `name` 不一致 | リポジトリ改名・移動の取り残し | リネーム PR を別途立ち上げ、本検証は FAIL のまま記録 |
