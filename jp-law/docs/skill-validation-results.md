@@ -1,27 +1,27 @@
 # Agent Skills 仕様バリデーション結果
 
-**検証日時**: 未実行
-**検証者**: 未実行
-**検証方法**: `npx skills-ref validate ./jp-law` + 自前チェック（grep / wc / basename 相当）
+**検証日時**: 2026-05-05 10:27 (+0900)
+**検証者**: anthropic-code-agent
+**検証方法**: `npx --yes skills-ref validate ./jp-law` + 自前チェック（PowerShell / bash）
 
 ## 実行環境
 
 | 項目 | 値 |
 |------|-----|
-| OS | 未取得 |
-| Node.js | 未取得 |
-| npm | 未取得 |
-| skills-ref | 未取得 |
+| OS | Microsoft Windows 10.0.26200 (Windows 11 Home) |
+| Node.js | v24.15.0 (fnm 経由) |
+| npm | 11.12.1 |
+| skills-ref | 0.1.5 |
 
 ## 検証結果サマリー
 
 | 項目 | 件数 |
 |------|------|
 | 総検証項目 | 5 |
-| PASS | 0 |
-| FAIL | 5 |
+| PASS | 5 |
+| FAIL | 0 |
 
-**総合判定**: FAIL（未検証）
+**総合判定**: PASS
 
 ## 検証詳細
 
@@ -32,10 +32,12 @@
 - **実際の出力**:
 
   ```text
-  （未取得）
+  Valid skill: ./jp-law
   ```
 
-- **判定**: FAIL（未検証）
+  終了コード: `0`
+
+- **判定**: PASS
 
 ### 2. name / description フロントマター必須
 
@@ -43,59 +45,72 @@
 - **期待値**: JSON 出力に `name` と `description` を含み、いずれも非空
 - **実際の出力**:
 
-  ```text
-  （未取得）
+  ```json
+  {
+    "name": "jp-law",
+    "description": "日本の法令を検索・取得するスキル。e-Gov法令API V2を使用し、法令名検索、条文取得、改正履歴、キーワード検索が可能。Use this skill when researching Japanese laws, regulations, or legal texts.",
+    "license": "MIT"
+  }
   ```
 
-- **判定**: FAIL（未検証）
+- **判定**: PASS（`name` と `description` がともに非空で取得できた）
 
 ### 3. name 命名規則（小文字・ハイフン・64 字以内）
 
-- **実行コマンド**: `Select-String -Path jp-law/SKILL.md -Pattern '^name: [a-z][a-z0-9-]{0,63}$'`（PowerShell）
-  / `grep -E '^name: [a-z][a-z0-9-]{0,63}$' jp-law/SKILL.md`（bash 相当）
+- **実行コマンド**: `Select-String -Path jp-law/SKILL.md -Pattern '^name: [a-z][a-z0-9-]{0,63}$'`
 - **期待値**: 1 行マッチし、内容が `name: jp-law`
 - **実際の出力**:
 
   ```text
-  （未取得）
+  jp-law\SKILL.md:2:name: jp-law
   ```
 
-- **判定**: FAIL（未検証）
+- **判定**: PASS（`jp-law` は 6 文字、先頭が英小文字、英数字とハイフンのみ）
 
 ### 4. ディレクトリ名と name 値の一致
 
-- **実行コマンド**: `Split-Path -Leaf (Resolve-Path ./jp-law)` と SKILL.md の `name` 値を比較
+- **実行コマンド**:
+
+  ```powershell
+  $dir  = Split-Path -Leaf (Resolve-Path ./jp-law)
+  $name = (Select-String -Path jp-law/SKILL.md -Pattern '^name:\s*(.+)$').Matches[0].Groups[1].Value.Trim()
+  "dir=$dir name=$name match=$($dir -eq $name)"
+  ```
+
 - **期待値**: 両方とも `jp-law`
 - **実際の出力**:
 
   ```text
-  （未取得）
+  dir=jp-law name=jp-law match=True
   ```
 
-- **判定**: FAIL（未検証）
+- **判定**: PASS
 
 ### 5. SKILL.md ≤ 500 行
 
-- **実行コマンド**: `(Get-Content jp-law/SKILL.md | Measure-Object -Line).Lines`（PowerShell）
-  / `wc -l jp-law/SKILL.md`（bash 相当）
+- **実行コマンド**: `wc -l jp-law/SKILL.md`（bash）/ `(Get-Content jp-law/SKILL.md | Measure-Object -Line).Lines`（PowerShell）
 - **期待値**: 500 以下
 - **実際の出力**:
 
   ```text
-  （未取得）
+  $ wc -l jp-law/SKILL.md
+  161 jp-law/SKILL.md
   ```
 
-- **判定**: FAIL（未検証）
+  PowerShell の `Measure-Object -Line`（空行を除く行数カウント）では 114 行。
+  いずれも 500 を大きく下回る。
+
+- **判定**: PASS
 
 ## 是正内容
 
-未実行のため、是正は発生していません。
+今回の検証では SKILL.md の修正は不要でした。是正は発生していません。
 
 ## 備考
 
-このドキュメントは TDD の Red 状態（全項目 FAIL）として作成されています。
-Green 状態への遷移後、`skill-validation-guide.md` に従った検証コマンドを実行し、
-出力と判定を本ファイルに転記してください。
+- skills-ref 0.1.5 は frontmatter の構造的妥当性のみ判定するため、
+  命名規則 / ディレクトリ名一致 / 行数は自前チェックでカバーしている。
+- 検証実行中に SKILL.md / scripts / references への変更は行っていない（読み取りのみ）。
 
 ## 関連
 
