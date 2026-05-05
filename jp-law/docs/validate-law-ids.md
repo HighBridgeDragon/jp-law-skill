@@ -13,7 +13,7 @@ law-aliases.mdに記載されている38件の法令IDが、実際のe-Gov API V
 `scripts/validate-law-ids.sh`を使用して、全law_idを一括で検証できます。
 
 ```bash
-cd egov-law
+cd jp-law
 bash scripts/validate-law-ids.sh
 ```
 

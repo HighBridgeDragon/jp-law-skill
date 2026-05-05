@@ -1,4 +1,4 @@
-# egov-law
+# jp-law
 
 e-Gov法令API V2を活用した日本法令調査スキル（Claude Code / AI Agent向け）
 
@@ -7,7 +7,7 @@ e-Gov法令API V2を活用した日本法令調査スキル（Claude Code / AI A
 ## インストール
 
 ```bash
-npx skills add HighBridgeDragon/egov-law-skill
+npx skills add HighBridgeDragon/jp-law-skill
 ```
 
 ## 対応プラットフォーム
@@ -45,14 +45,14 @@ npx skills add HighBridgeDragon/egov-law-skill
 
 ### 法令ID検証
 
-`egov-law/references/law-aliases.md`に記載された全法令IDの有効性を検証できます:
+`jp-law/references/law-aliases.md`に記載された全法令IDの有効性を検証できます:
 
 ```bash
-cd egov-law
+cd jp-law
 bash scripts/validate-law-ids.sh
 ```
 
-詳細は [egov-law/docs/validate-law-ids.md](egov-law/docs/validate-law-ids.md) を参照してください。
+詳細は [jp-law/docs/validate-law-ids.md](jp-law/docs/validate-law-ids.md) を参照してください。
 
 ### スクリプト一覧
 
@@ -63,7 +63,7 @@ bash scripts/validate-law-ids.sh
 - `validate-law-ids.sh` - 法令ID検証
 - `extract-law-ids.sh` - 法令ID一覧抽出
 
-詳細は [egov-law/scripts/README.md](egov-law/scripts/README.md) を参照してください。
+詳細は [jp-law/scripts/README.md](jp-law/scripts/README.md) を参照してください。
 
 ## e-Gov法令API V2
 

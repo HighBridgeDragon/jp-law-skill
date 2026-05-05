@@ -16,8 +16,8 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/HighBridgeDragon/egov-law-skill.git
-cd egov-law-skill/egov-law
+git clone https://github.com/HighBridgeDragon/jp-law-skill.git
+cd jp-law-skill/jp-law
 
 # 検証スクリプトを実行
 bash scripts/validate-law-ids.sh
@@ -97,7 +97,7 @@ bash scripts/search-laws.sh "個人情報の保護に関する法律"
 
 ### 2. law-aliases.mdを修正
 
-`egov-law/references/law-aliases.md`を編集して、正しい`law_id`に置き換えます。
+`jp-law/references/law-aliases.md`を編集して、正しい`law_id`に置き換えます。
 
 ### 3. 再検証
 
@@ -107,7 +107,7 @@ bash scripts/validate-law-ids.sh
 
 ### 4. 結果を記録
 
-`egov-law/docs/validation-results.md`を更新して、検証結果を記録します:
+`jp-law/docs/validation-results.md`を更新して、検証結果を記録します:
 
 ```markdown
 ## 検証結果サマリー
@@ -131,7 +131,7 @@ bash scripts/validate-law-ids.sh
 修正をコミットしてPRを作成します:
 
 ```bash
-git add egov-law/references/law-aliases.md egov-law/docs/validation-results.md
+git add jp-law/references/law-aliases.md jp-law/docs/validation-results.md
 git commit -m "fix: correct invalid law_id for [法令名]"
 git push
 ```
@@ -205,4 +205,4 @@ bash scripts/fetch-revisions.sh 129AC0000000089
 - [検証手順詳細](validate-law-ids.md)
 - [スクリプト一覧](../scripts/README.md)
 - [法令エイリアス](../references/law-aliases.md)
-- [Issue #12](https://github.com/HighBridgeDragon/egov-law-skill/issues/12)
+- [Issue #12](https://github.com/HighBridgeDragon/jp-law-skill/issues/12)
