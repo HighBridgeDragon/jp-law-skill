@@ -1,0 +1,23 @@
+jp-law/docs/skill-validation-guide.md
+  8543904e16390175 83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3e293bfecb776cd096de650b8db1b46a76d225b0",
+  "prompts": {
+    "8543904e16390175": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc31d09b-7638-4ee0-be10-df039b1f57f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 169,
+      "overriden_lines": 0
+    }
+  }
+}
