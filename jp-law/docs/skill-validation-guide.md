@@ -136,6 +136,8 @@ wc -l jp-law/SKILL.md
 
 500 以下であることを確認します。
 
+PowerShell の `Measure-Object -Line` と bash の `wc -l` は CRLF / 末尾改行の扱いの差により異なる値を返す場合があります。本検証では `wc -l` の値を判定基準とし、PowerShell 側の値は参考値として記録します。
+
 ## 結果ドキュメントへの記入手順
 
 1. `skill-validation-results.md` を開きます（Red 状態のテンプレートが準備されています）。

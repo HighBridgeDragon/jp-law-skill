@@ -97,8 +97,9 @@
   161 jp-law/SKILL.md
   ```
 
-  参考: PowerShell の `Measure-Object -Line` では 114 行（非空行のみカウント）。
-  どの計測方法でも 500 行を大きく下回る。
+  本検証では `wc -l` の **161 行** を判定基準とする。
+  PowerShell の `(Get-Content … | Measure-Object -Line).Lines` は CRLF / 末尾改行の扱いの差により異なる値（実測 114）を返すことがあるため、参考値として扱う。
+  いずれの計測方法でも 500 行を大きく下回るため判定は PASS。
 
 - **判定**: PASS
 
