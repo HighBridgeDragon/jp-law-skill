@@ -1,0 +1,35 @@
+README.md
+  d67a8d3532d5fcb2 55
+docs/superpowers/specs/2026-04-16-m1-research-plan-design.md
+  d67a8d3532d5fcb2 1-121
+jp-law/scripts/README.md
+  d67a8d3532d5fcb2 151,171
+docs/integration-test-guide.md
+  d67a8d3532d5fcb2 1-319
+docs/skill-validation-guide.md
+  d67a8d3532d5fcb2 1-169
+docs/integration-test-results.md
+  d67a8d3532d5fcb2 1-331
+docs/skill-validation-results.md
+  d67a8d3532d5fcb2 1-120
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "c1ff7b45252aae2681cd765b1f9d26734d525078",
+  "prompts": {
+    "d67a8d3532d5fcb2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5d926b0-c381-4d33-8751-ca70d3b6f211",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 1540,
+      "total_deletions": 7,
+      "accepted_lines": 1614,
+      "overriden_lines": 0
+    }
+  }
+}
