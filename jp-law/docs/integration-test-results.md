@@ -28,10 +28,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 **入力プロンプト**: 民法第709条を表示して
 
-| 項目 | 内容 |
-|---|---|
-| 判定 | 未実行 |
-| 実行日時 | 未実行 |
+**判定**: 未実行
 
 ### 呼出ログ抜粋
 
@@ -48,8 +45,8 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 ### 必須条件チェック
 
 - [ ] `references/law-aliases.md` で `民法` → `129AC0000000089` を解決
-- [ ] `scripts/fetch-law.sh` を `elm=MainProvision-Article_709` で呼出
-- [ ] 第709条本文を返却
+- [ ] `scripts/fetch-law.sh` を `elm=MainProvision-Article_709`（または同等の条文単位 `elm` 指定）で呼出
+- [ ] 第709条本文（不法行為に基づく損害賠償の条文）を返却
 
 ### 望ましい条件チェック
 
@@ -65,10 +62,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 **入力プロンプト**: 個人情報保護に関する法律を検索して
 
-| 項目 | 内容 |
-|---|---|
-| 判定 | 未実行 |
-| 実行日時 | 未実行 |
+**判定**: 未実行
 
 ### 呼出ログ抜粋
 
@@ -102,10 +96,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 **入力プロンプト**: 会社法の改正履歴を見せて
 
-| 項目 | 内容 |
-|---|---|
-| 判定 | 未実行 |
-| 実行日時 | 未実行 |
+**判定**: 未実行
 
 ### 呼出ログ抜粋
 
@@ -122,7 +113,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 ### 必須条件チェック
 
 - [ ] `references/law-aliases.md` で `会社法` → `417AC0000000086` を解決
-- [ ] `scripts/fetch-revisions.sh` を会社法 law_id で呼出
+- [ ] `scripts/fetch-revisions.sh` を会社法 `law_id` で呼出
 - [ ] 改正一覧を新しい順で返却
 
 ### 望ましい条件チェック
@@ -139,10 +130,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 **入力プロンプト**: AIに関する法律はあるか
 
-| 項目 | 内容 |
-|---|---|
-| 判定 | 未実行 |
-| 実行日時 | 未実行 |
+**判定**: 未実行
 
 ### 呼出ログ抜粋
 
@@ -176,10 +164,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 **入力プロンプト**: （TC-1〜TC-4 の操作を通じて確認）
 
-| 項目 | 内容 |
-|---|---|
-| 判定 | 未実行 |
-| 実行日時 | 未実行 |
+**判定**: 未実行
 
 ### 呼出ログ抜粋
 
