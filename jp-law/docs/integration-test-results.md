@@ -176,6 +176,12 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 
 TC-1〜TC-4 を通じて観測した、大規模法令（民法・会社法等）操作時の `fetch-law.sh` 呼び出しパターン。
 
+### 観測結果（elm 呼び出しパターン）
+
+```text
+未実行
+```
+
 ### 必須条件チェック
 
 - [ ] 大規模法令の操作で `elm` 指定なしの全文取得を回避
