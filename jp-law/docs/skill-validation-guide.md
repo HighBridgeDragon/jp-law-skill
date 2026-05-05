@@ -80,6 +80,25 @@ grep -E "^name: [a-z][a-z0-9-]{0,63}$" jp-law/SKILL.md
 
 該当行（`name: jp-law`）が 1 件返ることを確認します。マッチ 0 件は FAIL です。
 
+**補足: より堅牢な代替（frontmatter 限定取得）**
+
+上記 `Select-String` / `grep` は SKILL.md 本文に `name:` で始まる行が現れた場合に誤マッチする可能性があります（現状の SKILL.md では問題なし）。frontmatter のフィールドのみを厳密に取得したい場合は、`skills-ref read-properties` の JSON 出力を使う方法が堅牢です。
+
+PowerShell:
+
+```powershell
+(npx --yes skills-ref read-properties ./jp-law | ConvertFrom-Json).name
+```
+
+bash（`jq` 必要）:
+
+```bash
+npx --yes skills-ref read-properties ./jp-law | jq -r .name
+```
+
+返却値が `jp-law` であり、命名規則正規表現 `^[a-z][a-z0-9-]{0,63}$` にマッチすることを確認します。
+セクション 4 の `$name` 取得にもこの代替を利用できます。
+
 ### 4. ディレクトリ名と name の一致
 
 PowerShell:
