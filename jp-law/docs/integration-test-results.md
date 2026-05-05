@@ -45,7 +45,7 @@ Issue [#14](https://github.com/HighBridgeDragon/jp-law-skill/issues/14)「スキ
 ### 必須条件チェック
 
 - [ ] `references/law-aliases.md` で `民法` → `129AC0000000089` を解決
-- [ ] `scripts/fetch-law.sh` を `elm=MainProvision-Article_709`（または同等の条文単位 `elm` 指定）で呼出
+- [ ] `scripts/fetch-law.sh` を `elm` に `MainProvision-Article_709`（または同等の条文単位 elm 指定）を指定して呼出
 - [ ] 第709条本文（不法行為に基づく損害賠償の条文）を返却
 
 ### 望ましい条件チェック
