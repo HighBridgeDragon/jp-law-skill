@@ -18,24 +18,24 @@
 
 ## 前提環境
 
-| 項目 | バージョン / 値 | 備考 |
+| 項目 | バージョン要件 | 備考 |
 | --- | --- | --- |
 | OS | Windows 11 / macOS / Linux | 本ガイドは Windows + PowerShell を主に記述 |
-| Node.js | v24.15.0 | fnm 経由で固定 |
-| npm | 11.12.1 | Node.js 同梱 |
+| Node.js | >= 24.0.0（推奨） | fnm 等でバージョン切替を行うこと推奨。検証時の実測バージョンは [skill-validation-results.md](skill-validation-results.md) 参照 |
+| npm | Node.js 同梱版 | Node.js に同梱 |
 | skills-ref | 0.1.5 以上 | `npx --yes` で都度取得（インストール不要） |
 
 ### fnm セットアップ（PowerShell）
 
 ```powershell
 fnm env --use-on-cd | Out-String | Invoke-Expression
-fnm use 24.15.0
-node --version  # v24.15.0 を確認
+fnm use 24       # 例: 24.15.0 など 24 系の最新を選択
+node --version   # >= v24.0.0 を確認
 npm --version
 ```
 
 bash 環境（macOS/Linux）の場合は `eval "$(fnm env --use-on-cd)"` で
-シェルにフックを注入したうえで `fnm use 24.15.0` を実行してください。
+シェルにフックを注入したうえで `fnm use 24` を実行してください。
 
 ## 実行コマンド一覧
 
