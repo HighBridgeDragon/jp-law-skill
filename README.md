@@ -39,7 +39,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 ## 依存
 
-- `mcp-server-fetch`（APIの呼び出しに使用、認証不要）
+- `curl`（APIの呼び出しに使用、認証不要）
 
 ## 開発者向け
 
