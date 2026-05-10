@@ -1,0 +1,37 @@
+jp-law/scripts/lib/urlencode.sh
+  s_4ea34f69710f9a::t_1ea7bd610954fc 1
+  s_ee79712e73d358::t_927d6e77965417 2-13
+jp-law/scripts/search-keyword.sh
+  s_4ea34f69710f9a::t_52fde7edbda331 8-9,18
+jp-law/scripts/search-laws.sh
+  s_4ea34f69710f9a::t_a2e992527195ff 8-9,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "56fb32e50d19b001b531a8c0dd0fa7322ab54ea2",
+  "prompts": {},
+  "humans": {
+    "h_f91a6a8a277de2": {
+      "author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_4ea34f69710f9a": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "d4f136df-c91d-427a-be9c-28170dad85e2",
+        "model": "unknown"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    },
+    "s_ee79712e73d358": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f614ee3c-d704-40ce-a477-557732598886",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
