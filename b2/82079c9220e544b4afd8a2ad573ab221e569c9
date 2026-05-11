@@ -1,0 +1,19 @@
+jp-law/scripts/lib/urlencode.sh
+  s_892212a254f1df::t_d86a36b365ea7f 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b282079c9220e544b4afd8a2ad573ab221e569c9",
+  "prompts": {},
+  "sessions": {
+    "s_892212a254f1df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3a6a2a42-61a0-4e0b-9350-e1f16e1a0e7f",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
