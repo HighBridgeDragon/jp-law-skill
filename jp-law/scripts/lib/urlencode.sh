@@ -1,4 +1,5 @@
-#!/bin/bash
+# shellcheck shell=bash
+# このファイルは source で読み込む専用です。直接実行しないでください。
 # URLエンコード共通関数
 # Usage: source "$SCRIPT_DIR/lib/urlencode.sh"
 #        ENCODED=$(urlencode "$RAW")
