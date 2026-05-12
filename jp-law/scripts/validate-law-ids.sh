@@ -54,6 +54,11 @@ LAW_ID_COUNT=$(printf "%s\n" "$LAW_IDS" | awk 'NF {count++} END {print count + 0
 echo "検証対象: ${LAW_ID_COUNT} 件の法令ID"
 echo ""
 
+# tempfile をループ外で 1 回だけ作成し、EXIT trap で確実に削除する
+# （シグナル受信や set -e による途中終了時にも /tmp 配下に残存しないようにするため）
+RESPONSE_FILE=$(mktemp)
+trap 'rm -f "$RESPONSE_FILE"' EXIT
+
 # 各law_idを検証
 for LAW_ID in $LAW_IDS; do
   TOTAL=$((TOTAL + 1))
@@ -61,8 +66,7 @@ for LAW_ID in $LAW_IDS; do
   # APIエンドポイント: GET /law_revisions/{law_id}
   URL="${API_BASE}/law_revisions/${LAW_ID}"
 
-  # HTTPステータスコードと応答内容を取得
-  RESPONSE_FILE=$(mktemp)
+  # HTTPステータスコードと応答内容を取得（curl -o は対象ファイルを毎回上書きする）
   HTTP_CODE=$(curl -s -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
 
   if [ "$HTTP_CODE" = "200" ]; then
@@ -85,8 +89,6 @@ for LAW_ID in $LAW_IDS; do
     FAILED=$((FAILED + 1))
     FAILED_IDS="${FAILED_IDS}${LAW_ID}"$'\n'
   fi
-
-  rm -f "$RESPONSE_FILE"
 
   # APIへの負荷を軽減するため、短い間隔をあける
   sleep 0.5
