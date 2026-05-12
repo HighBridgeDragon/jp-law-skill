@@ -9,6 +9,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ALIASES_FILE="${SCRIPT_DIR}/../references/law-aliases.md"
 API_BASE="https://laws.e-gov.go.jp/api/2"
 
+# 一時ファイルの初期化とクリーンアップ設定
+RESPONSE_FILE=$(mktemp)
+trap 'rm -f "$RESPONSE_FILE"' EXIT
+
 # 色付き出力
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -61,8 +65,7 @@ for LAW_ID in $LAW_IDS; do
   # APIエンドポイント: GET /law_revisions/{law_id}
   URL="${API_BASE}/law_revisions/${LAW_ID}"
 
-  # HTTPステータスコードと応答内容を取得
-  RESPONSE_FILE=$(mktemp)
+  # HTTPステータスコードと応答内容を取得（一時ファイルを上書き利用）
   HTTP_CODE=$(curl -s -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
 
   if [ "$HTTP_CODE" = "200" ]; then
@@ -85,8 +88,6 @@ for LAW_ID in $LAW_IDS; do
     FAILED=$((FAILED + 1))
     FAILED_IDS="${FAILED_IDS}${LAW_ID}"$'\n'
   fi
-
-  rm -f "$RESPONSE_FILE"
 
   # APIへの負荷を軽減するため、短い間隔をあける
   sleep 0.5
