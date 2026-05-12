@@ -1,0 +1,19 @@
+jp-law/scripts/validate-law-ids.sh
+  s_958ccd9d5996a7::t_aa6d6da7c97355 57-61,69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "20a7d2063d83721f6184b4662ccbd5971ae70b84",
+  "prompts": {},
+  "sessions": {
+    "s_958ccd9d5996a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "97834d46-fc3a-47fb-8c7e-f341cf630800",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
