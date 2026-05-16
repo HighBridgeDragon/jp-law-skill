@@ -81,7 +81,9 @@ for LAW_ID in $LAW_IDS; do
   URL="${API_BASE}/law_revisions/${LAW_ID}"
 
   # HTTPステータスコードと応答内容を取得（curl -o は対象ファイルを毎回上書きする）
-  HTTP_CODE=$(curl -s --max-time "$MAX_TIME" --connect-timeout 10 -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
+  # curl がタイムアウト（exit 28）・接続失敗（exit 7）等で非0終了した場合に
+  # set -e でループ全体が中断しないよう、|| echo "000" でフォールバックする
+  HTTP_CODE=$(curl -s --max-time "$MAX_TIME" --connect-timeout 10 -o "$RESPONSE_FILE" -w "%{http_code}" "$URL" || echo "000")
 
   if [ "$HTTP_CODE" = "200" ]; then
     # 法令名を取得（簡易的なJSONパース、jq不要）
