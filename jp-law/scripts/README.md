@@ -10,10 +10,11 @@
 法令本文データを取得します。
 
 ```bash
-bash scripts/fetch-law.sh <law_id> [elm]
+bash scripts/fetch-law.sh [--max-time SEC] <law_id> [elm]
 ```
 
 **パラメータ:**
+- `--max-time SEC`: curl の最大実行時間（秒、オプション、デフォルト: 30）
 - `law_id`: 法令ID（必須）
 - `elm`: 取得する要素ID（オプション）
 
@@ -24,6 +25,9 @@ bash scripts/fetch-law.sh 129AC0000000089
 
 # 民法第1条のみ取得
 bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_1
+
+# 大型法令の取得で 30 秒では足りない場合は --max-time で延長
+bash scripts/fetch-law.sh --max-time 120 129AC0000000089
 ```
 
 ### fetch-revisions.sh
@@ -31,10 +35,11 @@ bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_1
 法令の改正履歴を取得します。
 
 ```bash
-bash scripts/fetch-revisions.sh <law_id>
+bash scripts/fetch-revisions.sh [--max-time SEC] <law_id>
 ```
 
 **パラメータ:**
+- `--max-time SEC`: curl の最大実行時間（秒、オプション、デフォルト: 30）
 - `law_id`: 法令ID（必須）
 
 **例:**
@@ -48,10 +53,11 @@ bash scripts/fetch-revisions.sh 129AC0000000089
 法令名で検索します。
 
 ```bash
-bash scripts/search-laws.sh <law_title> [limit]
+bash scripts/search-laws.sh [--max-time SEC] <law_title> [limit]
 ```
 
 **パラメータ:**
+- `--max-time SEC`: curl の最大実行時間（秒、オプション、デフォルト: 30）
 - `law_title`: 検索する法令名（必須）
 - `limit`: 取得件数の上限（オプション、デフォルト: 10）
 
@@ -69,10 +75,11 @@ bash scripts/search-laws.sh 著作権 20
 法令本文内のキーワードで検索します。
 
 ```bash
-bash scripts/search-keyword.sh <keyword> [limit]
+bash scripts/search-keyword.sh [--max-time SEC] <keyword> [limit]
 ```
 
 **パラメータ:**
+- `--max-time SEC`: curl の最大実行時間（秒、オプション、デフォルト: 30）
 - `keyword`: 検索キーワード（必須）
 - `limit`: 取得件数の上限（オプション、デフォルト: 10）
 
@@ -92,8 +99,11 @@ bash scripts/search-keyword.sh 電子署名 30
 law-aliases.mdに記載された全法令IDをe-Gov APIで一括検証します。
 
 ```bash
-bash scripts/validate-law-ids.sh
+bash scripts/validate-law-ids.sh [--max-time SEC]
 ```
+
+**パラメータ:**
+- `--max-time SEC`: ループ内 curl の最大実行時間（秒、オプション、デフォルト: 30）
 
 **機能:**
 - law-aliases.mdから全law_idを自動抽出
