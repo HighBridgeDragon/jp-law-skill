@@ -1,5 +1,7 @@
 # jp-law
 
+[![skills.sh](https://skills.sh/b/HighBridgeDragon/jp-law-skill)](https://skills.sh/HighBridgeDragon/jp-law-skill)
+
 e-Gov法令API V2を活用した日本法令調査スキル（Claude Code / AI Agent向け）
 
 日本の法令の検索・条文取得・改正履歴・キーワード検索をAIエージェントから直接実行できます。
