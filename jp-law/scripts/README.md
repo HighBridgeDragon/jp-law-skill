@@ -23,7 +23,7 @@ bash scripts/fetch-law.sh <law_id> [elm]
 bash scripts/fetch-law.sh 129AC0000000089
 
 # 民法第1条のみ取得
-bash scripts/fetch-law.sh 129AC0000000089 1
+bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_1
 ```
 
 ### fetch-revisions.sh
