@@ -3,11 +3,25 @@ set -e
 
 # law_id検証スクリプト
 # law-aliases.mdに記載された全law_idをe-Gov APIで検証する
-# Usage: bash scripts/validate-law-ids.sh
+# Usage: bash scripts/validate-law-ids.sh [--max-time SEC]
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ALIASES_FILE="${SCRIPT_DIR}/../references/law-aliases.md"
 API_BASE="https://laws.e-gov.go.jp/api/2"
+
+MAX_TIME=30
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --max-time)
+      MAX_TIME="$2"
+      shift 2
+      ;;
+    --) shift; break ;;
+    -*) echo "Unknown option: $1" >&2; exit 1 ;;
+    *) break ;;
+  esac
+done
 
 # 色付き出力
 RED='\033[0;31m'
@@ -67,7 +81,7 @@ for LAW_ID in $LAW_IDS; do
   URL="${API_BASE}/law_revisions/${LAW_ID}"
 
   # HTTPステータスコードと応答内容を取得（curl -o は対象ファイルを毎回上書きする）
-  HTTP_CODE=$(curl -s -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
+  HTTP_CODE=$(curl -s --max-time "$MAX_TIME" --connect-timeout 10 -o "$RESPONSE_FILE" -w "%{http_code}" "$URL")
 
   if [ "$HTTP_CODE" = "200" ]; then
     # 法令名を取得（簡易的なJSONパース、jq不要）
