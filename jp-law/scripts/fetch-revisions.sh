@@ -10,6 +10,7 @@ MAX_TIME=30
 while [ $# -gt 0 ]; do
   case "$1" in
     --max-time)
+      [ -n "$2" ] || { echo "--max-time requires a numeric argument" >&2; exit 1; }
       MAX_TIME="$2"
       shift 2
       ;;
