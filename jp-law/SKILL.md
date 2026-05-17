@@ -1,9 +1,9 @@
 ---
 name: jp-law
-description: 日本の法令を検索・取得するスキル。e-Gov法令API V2を使用し、法令名検索、条文取得、改正履歴、キーワード検索が可能。Use this skill when researching Japanese laws, regulations, or legal texts.
+description: Search and retrieve Japanese laws and regulations via the official e-Gov Law API V2 (no auth required). Supports law name search, article retrieval, amendment history, and full-text keyword search. Useful for legal research, compliance checks, contract review, and any task involving Japanese statutes (民法/Civil Code, 会社法/Companies Act, 個人情報保護法/APPI, 労働基準法/Labor Standards Act, etc.). 日本の法令をe-Gov法令API V2経由で検索・取得するスキル。法令名検索、条文取得、改正履歴、キーワード検索に対応。Use this skill when researching Japanese laws, regulations, or legal texts.
 license: MIT
 metadata:
-  version: "1.1.3"
+  version: "1.2.0"
 ---
 
 # e-Gov 法令調査スキル
