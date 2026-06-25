@@ -1,0 +1,23 @@
+README.md
+  b4c03b662a260d6b 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "a26167b20e3e41933d8cdd9593a73cedd331f7a0",
+  "prompts": {
+    "b4c03b662a260d6b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99554131-a56e-43fc-b11d-a97d3d4ab356",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 52,
+      "total_deletions": 0,
+      "accepted_lines": 61,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,19 @@
+jp-law/SKILL.md
+  s_958ccd9d5996a7::t_e849d9f1cb0e09 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "8c75165168ab1023ef7299a495fd9a6ca34f3c1b",
+  "prompts": {},
+  "sessions": {
+    "s_958ccd9d5996a7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "97834d46-fc3a-47fb-8c7e-f341cf630800",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}

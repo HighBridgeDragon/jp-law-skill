@@ -1,0 +1,53 @@
+jp-law/scripts/validate-law-ids.sh
+  6acb6380dfb4af9e 1-113
+jp-law/docs/VALIDATION_EXECUTION.md
+  6acb6380dfb4af9e 1-208
+jp-law/references/api-reference.md
+  6acb6380dfb4af9e 1-504
+jp-law/references/law-aliases.md
+  6acb6380dfb4af9e 1-106
+README.md
+  6acb6380dfb4af9e 1,10,48,51,55,66
+jp-law/scripts/search-laws.sh
+  6acb6380dfb4af9e 1-26
+jp-law/SKILL.md
+  6acb6380dfb4af9e 1-161
+jp-law/scripts/README.md
+  6acb6380dfb4af9e 1-171
+jp-law/scripts/fetch-revisions.sh
+  6acb6380dfb4af9e 1-15
+jp-law/scripts/fetch-law.sh
+  6acb6380dfb4af9e 1-23
+jp-law/docs/validation-results.md
+  6acb6380dfb4af9e 1-76
+jp-law/references/response-format.md
+  6acb6380dfb4af9e 1-437
+jp-law/docs/validate-law-ids.md
+  6acb6380dfb4af9e 1-191
+.gitignore
+  6acb6380dfb4af9e 3
+jp-law/scripts/search-keyword.sh
+  6acb6380dfb4af9e 1-26
+jp-law/scripts/extract-law-ids.sh
+  6acb6380dfb4af9e 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "c2ebf97220e9f8f0b65528e862ccab2e68dc233c",
+  "prompts": {
+    "6acb6380dfb4af9e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "96020d83-c8f9-47a3-aced-f9bcf53311b7",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 2124,
+      "total_deletions": 16,
+      "accepted_lines": 2187,
+      "overriden_lines": 0
+    }
+  }
+}

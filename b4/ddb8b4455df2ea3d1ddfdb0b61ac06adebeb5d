@@ -1,0 +1,23 @@
+jp-law/docs/skill-validation-results.md
+  8e43e7c89712f30f 3-5,11-14,21-22,24,35,38-40,48-53,56,60,65,68,72-79,84,87,91,96-97,100-103,107,111-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "b4ddb8b4455df2ea3d1ddfdb0b61ac06adebeb5d",
+  "prompts": {
+    "8e43e7c89712f30f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "85f1d7f2-5aed-4cd7-9b4a-cdd5b9bbd948",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 45,
+      "total_deletions": 30,
+      "accepted_lines": 45,
+      "overriden_lines": 0
+    }
+  }
+}

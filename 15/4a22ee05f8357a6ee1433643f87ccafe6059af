@@ -1,0 +1,36 @@
+jp-law/scripts/validate-law-ids.sh
+  s_5238d40a6e5c6b::t_982b8416b3729c 84
+  s_5238d40a6e5c6b::t_07fd49f0fbd309 25
+  s_5238d40a6e5c6b::t_49ea017037ee62 6,12-24
+jp-law/scripts/README.md
+  s_5238d40a6e5c6b::t_33ec94179b4a31 78,82
+  s_5238d40a6e5c6b::t_6f03f07a7cb0bc 102,105-106
+  s_5238d40a6e5c6b::t_8a2cbd13c1a15f 38,42
+  s_5238d40a6e5c6b::t_9772e36b690b75 56,60
+  s_5238d40a6e5c6b::t_2aad2b476b5be9 28-30
+  s_5238d40a6e5c6b::t_b5ac78e7ad2eb2 13,17,107
+jp-law/scripts/fetch-revisions.sh
+  s_5238d40a6e5c6b::t_8703a52066de20 5,8-21,25,29
+jp-law/scripts/fetch-law.sh
+  s_5238d40a6e5c6b::t_8ce1cec51aad45 5,8-21,26,37
+jp-law/scripts/search-laws.sh
+  s_5238d40a6e5c6b::t_e5a66ba08d9c8d 5,10-23,28,35
+jp-law/scripts/search-keyword.sh
+  s_5238d40a6e5c6b::t_46b36297fe1ea2 5,10-23,28,35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "154a22ee05f8357a6ee1433643f87ccafe6059af",
+  "prompts": {},
+  "sessions": {
+    "s_5238d40a6e5c6b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8760bf38-0004-43a6-81c9-14bb0d2b61fb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}

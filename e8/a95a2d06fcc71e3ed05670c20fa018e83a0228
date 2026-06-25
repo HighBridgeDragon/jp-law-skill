@@ -1,0 +1,23 @@
+jp-law/docs/integration-test-guide.md
+  8e43e7c89712f30f 1-279
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "e8a95a2d06fcc71e3ed05670c20fa018e83a0228",
+  "prompts": {
+    "8e43e7c89712f30f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "85f1d7f2-5aed-4cd7-9b4a-cdd5b9bbd948",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 279,
+      "total_deletions": 0,
+      "accepted_lines": 279,
+      "overriden_lines": 0
+    }
+  }
+}

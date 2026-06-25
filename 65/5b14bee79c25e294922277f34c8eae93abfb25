@@ -1,0 +1,25 @@
+jp-law/docs/integration-test-results.md
+  aa4f04d0976fab6d 304
+jp-law/docs/integration-test-guide.md
+  aa4f04d0976fab6d 5,54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "655b14bee79c25e294922277f34c8eae93abfb25",
+  "prompts": {
+    "aa4f04d0976fab6d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "717c7182-a76b-4499-8710-6383ac292d18",
+        "model": "unknown"
+      },
+      "human_author": "Ryo Takahashi",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 629,
+      "overriden_lines": 0
+    }
+  }
+}

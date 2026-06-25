@@ -1,0 +1,19 @@
+jp-law/scripts/README.md
+  s_5238d40a6e5c6b::t_0be92b1d49c2f6 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "05f40b5e9df91774d325a49b7d2e62f5895a2302",
+  "prompts": {},
+  "sessions": {
+    "s_5238d40a6e5c6b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8760bf38-0004-43a6-81c9-14bb0d2b61fb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
