@@ -5,17 +5,16 @@ set -euo pipefail
 # Usage: bash .github/scripts/validate-skill.sh <skill-dir>
 #
 # 文字数は必ず文字単位で数える。日本語を含む description をバイト単位で数えると
-# 1.25 倍前後に膨らみ、上限に収まっているものを超過と誤判定する。
+# 1.25 倍前後に膨らみ、上限内のものを超過と誤判定する。
 export LC_ALL=C.UTF-8
 
 SKILL_DIR="${1:?Usage: bash .github/scripts/validate-skill.sh <skill-dir>}"
-SKILL_DIR="${SKILL_DIR%/}"
 SKILL_MD="$SKILL_DIR/SKILL.md"
 
-# claude.ai のアップローダが課す description 上限。オープン仕様より厳しく、公式 support 記事のみが記載する。
-# 実効値の確証が取れていないため、超過は警告に留めて Release は通す。
-CLAUDE_AI_DESC_MAX=200
-# オープン仕様 / Skills API の上限。こちらは根拠が一致しているため違反を失敗として扱う。
+# オープン仕様 / Skills API の上限。
+# 公式 support 記事は claude.ai のアップローダの上限を 200 文字と記載するが、
+# 2026-09-24 に 520 / 567 文字の skill が実際にアップロードを通ったため、
+# 200 は実効値ではないと判断して検査しない。
 SPEC_DESC_MAX=1024
 SPEC_NAME_MAX=64
 # 非圧縮の合計サイズ上限（30 MB）
@@ -23,7 +22,6 @@ SPEC_SIZE_MAX_KB=$((30 * 1024))
 
 fail=0
 err() { echo "ERROR: $*" >&2; fail=1; }
-warn() { echo "WARNING: $*" >&2; }
 
 if [ ! -f "$SKILL_MD" ]; then
   echo "ERROR: $SKILL_MD が無い。zip のトップレベルフォルダ直下に SKILL.md が必要" >&2
@@ -50,10 +48,14 @@ echo "name: ${NAME} (${NAME_LEN} 文字) / description: ${DESC_LEN} 文字 / 非
 [ "$NAME_LEN" -le "$SPEC_NAME_MAX" ] || err "name が ${NAME_LEN} 文字。上限は ${SPEC_NAME_MAX} 文字"
 
 [ -n "$DESC" ] || err "frontmatter に description が無い"
-[ "$DESC_LEN" -le "$SPEC_DESC_MAX" ] || err "description が ${DESC_LEN} 文字。オープン仕様の上限は ${SPEC_DESC_MAX} 文字"
-[ "$DESC_LEN" -le "$CLAUDE_AI_DESC_MAX" ] || warn "description が ${DESC_LEN} 文字。claude.ai のアップローダは ${CLAUDE_AI_DESC_MAX} 文字を上限として記載しており、アップロードが拒否される可能性がある"
+[ "$DESC_LEN" -le "$SPEC_DESC_MAX" ] || err "description が ${DESC_LEN} 文字。上限は ${SPEC_DESC_MAX} 文字"
 
 [ "$SIZE_KB" -le "$SPEC_SIZE_MAX_KB" ] || err "非圧縮サイズが ${SIZE_KB} KB。上限は ${SPEC_SIZE_MAX_KB} KB"
+
+# skill は Linux サンドボックス上で実行されるため、CRLF のシェルスクリプトは
+# `$'\r': command not found` となって動かない。zip に混入させない。
+CRLF=$(find "$SKILL_DIR" -name '*.sh' -type f -exec grep -lU $'\r' {} +)
+[ -z "$CRLF" ] || err "CRLF のスクリプトがある。Linux 上で実行できないため LF にすること（.gitattributes の eol=lf を確認）: ${CRLF//$'\n'/ }"
 
 if [ "$fail" -ne 0 ]; then
   echo "NG: ${SKILL_DIR} に仕様違反がある" >&2
