@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
   pull_request:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
 
   release:
     needs: validate
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -30,18 +30,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build skill zip
+      - name: Release when SKILL.md declares a new version
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # バージョンの唯一のソースは SKILL.md の metadata.version。タグはそこから生やす
+          TAG="v$(bash .github/scripts/skill-version.sh jp-law)"
+
+          # 同一バージョンのままの push では何もしない。version の変更だけがリリースの契機
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "$TAG は公開済みのため何もしない"
+            exit 0
+          fi
+
           # MIT は複製物に許諾表示を含めることを求めるため、zip 内にも LICENSE を同梱する
           cp LICENSE jp-law/LICENSE
           # 展開時のトップが jp-law/ になるよう、ディレクトリごと固める
           zip -r jp-law.zip jp-law/
           unzip -l jp-law.zip
 
-      - name: Create release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "$GITHUB_REF_NAME" jp-law.zip \
-            --title "$GITHUB_REF_NAME" \
+          # gh release create はタグが無ければ --target の commit に作るため、事前の tag push は不要
+          gh release create "$TAG" jp-law.zip \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
             --notes-file .github/release-notes.md
