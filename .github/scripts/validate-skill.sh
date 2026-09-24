@@ -85,6 +85,15 @@ while IFS= read -r script; do
 done < <(find "$SKILL_DIR" -name '*.sh' -type f)
 [ -z "$CRLF" ] || err "CRLF のスクリプトがある。Linux 上で実行できないため LF にすること（.gitattributes の eol=lf を確認）:${CRLF}"
 
+# metadata.version は release.yml がタグ名を生成する唯一のソース。形式が崩れた
+# まま main に入ると不正なタグでリリースされるため、PR 段階で止める。
+# 抽出と検証の実体は skill-version.sh に置き、release.yml と同じ parser を共有する。
+if VERSION=$(bash "$(dirname "$0")/skill-version.sh" "$SKILL_DIR"); then
+  echo "metadata.version: ${VERSION} → リリースタグ v${VERSION}"
+else
+  fail=1
+fi
+
 if [ "$fail" -ne 0 ]; then
   echo "NG: ${SKILL_DIR} に仕様違反がある" >&2
   exit 1
