@@ -4,6 +4,11 @@ set -euo pipefail
 # Agent Skills 仕様への適合検証 — Release の事前ゲート
 # Usage: bash .github/scripts/validate-skill.sh <skill-dir>
 #
+# 前提: frontmatter の name / description は単一行の plain scalar であること。
+# ブロックスカラー（description: |）や次行への折り返しは assert_single_line で
+# 失敗させる。これらを黙って受け入れると値を途中までしか読めず、上限超過を
+# 検知しないまま通してしまい、ゲートとして機能しなくなるため。
+#
 # 文字数は必ず文字単位で数える。日本語を含む description をバイト単位で数えると
 # 1.25 倍前後に膨らみ、上限内のものを超過と誤判定する。
 export LC_ALL=C.UTF-8
@@ -33,6 +38,19 @@ frontmatter() {
 }
 field() { frontmatter | sed -n "s/^$1: *//p" | head -1; }
 
+# 単一行 plain scalar でなければ失敗させる（上記の前提を守らせる）
+assert_single_line() {
+  case "$2" in
+    '|'*|'>'*)
+      err "$1 が YAML のブロックスカラー。本スクリプトは単一行 plain scalar のみ対応する"
+      return
+      ;;
+  esac
+  if frontmatter | awk -v k="$1" 'prev && /^[[:space:]]/ {found=1; exit} {prev = ($0 ~ "^" k ": ")} END {exit !found}'; then
+    err "$1 の値が次行へ折り返している。本スクリプトは単一行 plain scalar のみ対応する"
+  fi
+}
+
 NAME=$(field name)
 DESC=$(field description)
 DIR_NAME=$(basename "$SKILL_DIR")
@@ -44,10 +62,12 @@ SIZE_KB=$(du -sk "$SKILL_DIR" | cut -f1)
 echo "name: ${NAME} (${NAME_LEN} 文字) / description: ${DESC_LEN} 文字 / 非圧縮サイズ: ${SIZE_KB} KB"
 
 [ -n "$NAME" ] || err "frontmatter に name が無い"
+assert_single_line name "$NAME"
 [ "$NAME" = "$DIR_NAME" ] || err "name (${NAME}) がディレクトリ名 (${DIR_NAME}) と一致しない。仕様は一致を要求する"
 [ "$NAME_LEN" -le "$SPEC_NAME_MAX" ] || err "name が ${NAME_LEN} 文字。上限は ${SPEC_NAME_MAX} 文字"
 
 [ -n "$DESC" ] || err "frontmatter に description が無い"
+assert_single_line description "$DESC"
 [ "$DESC_LEN" -le "$SPEC_DESC_MAX" ] || err "description が ${DESC_LEN} 文字。上限は ${SPEC_DESC_MAX} 文字"
 
 [ "$SIZE_KB" -le "$SPEC_SIZE_MAX_KB" ] || err "非圧縮サイズが ${SIZE_KB} KB。上限は ${SPEC_SIZE_MAX_KB} KB"
