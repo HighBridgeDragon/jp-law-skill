@@ -25,8 +25,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # リリースを直列化する。gh release view による存在確認と gh release create の
+    # 間に check-then-act の隙間があり、main への連続 push で両ジョブが確認を
+    # 通過すると片方がタグ重複で落ちるため。
+    # queue: max でキューに積む。既定は pending 1 件までで古い pending が
+    # キャンセルされ、version を上げた push が捨てられるとその版の Release が
+    # 作られないまま終わるため。cancel-in-progress との併用は不可。
+    concurrency:
+      group: release
+      queue: max
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
