@@ -1,0 +1,19 @@
+.github/scripts/validate-skill.sh
+  s_8913f9e7a1c03c::t_a0b0d5aa610ff0 88-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "68dbb3aabaef17d71b5b5e147a537201b6364deb",
+  "prompts": {},
+  "sessions": {
+    "s_8913f9e7a1c03c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfd50b77-c636-4586-aee2-9741d2a6407f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
