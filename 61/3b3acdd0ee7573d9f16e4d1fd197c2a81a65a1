@@ -1,0 +1,23 @@
+.github/workflows/release.yml
+  s_b6baf6cc2aa59d::t_a309e23f0220de 1-47
+.gitignore
+  s_b6baf6cc2aa59d::t_8d54b09f0a705a 2-5
+.github/release-notes.md
+  s_b6baf6cc2aa59d::t_a309e23f0220de 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "613b3acdd0ee7573d9f16e4d1fd197c2a81a65a1",
+  "prompts": {},
+  "sessions": {
+    "s_b6baf6cc2aa59d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "47d2f24b-ebdd-4eda-9b5b-2256626084e0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
