@@ -53,9 +53,14 @@ echo "name: ${NAME} (${NAME_LEN} 文字) / description: ${DESC_LEN} 文字 / 非
 [ "$SIZE_KB" -le "$SPEC_SIZE_MAX_KB" ] || err "非圧縮サイズが ${SIZE_KB} KB。上限は ${SPEC_SIZE_MAX_KB} KB"
 
 # skill は Linux サンドボックス上で実行されるため、CRLF のシェルスクリプトは
-# `$'\r': command not found` となって動かない。zip に混入させない。
-CRLF=$(find "$SKILL_DIR" -name '*.sh' -type f -exec grep -lU $'\r' {} +)
-[ -z "$CRLF" ] || err "CRLF のスクリプトがある。Linux 上で実行できないため LF にすること（.gitattributes の eol=lf を確認）: ${CRLF//$'\n'/ }"
+# 実行時に `command not found` となって動かない。zip に混入させない。
+# 検出は tr で CR バイトを直接数える。grep のパターンに CR を渡す方法は
+# 環境によって誤検知するため使わない。
+CRLF=""
+while IFS= read -r script; do
+  [ "$(tr -dc '\r' < "$script" | wc -c)" -eq 0 ] || CRLF="${CRLF} ${script}"
+done < <(find "$SKILL_DIR" -name '*.sh' -type f)
+[ -z "$CRLF" ] || err "CRLF のスクリプトがある。Linux 上で実行できないため LF にすること（.gitattributes の eol=lf を確認）:${CRLF}"
 
 if [ "$fail" -ne 0 ]; then
   echo "NG: ${SKILL_DIR} に仕様違反がある" >&2
