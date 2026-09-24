@@ -1,0 +1,19 @@
+.github/workflows/release.yml
+  s_8913f9e7a1c03c::t_0f42ec201347fa 28-36,39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c60038e4853c9d7cc3d1fafc95d716df40e7a931",
+  "prompts": {},
+  "sessions": {
+    "s_8913f9e7a1c03c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfd50b77-c636-4586-aee2-9741d2a6407f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
