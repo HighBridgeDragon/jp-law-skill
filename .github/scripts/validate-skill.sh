@@ -33,8 +33,11 @@ if [ ! -f "$SKILL_MD" ]; then
   exit 1
 fi
 
+# CR を落としてから解析する。SKILL.md が CRLF で書かれていると行末の CR が
+# 値に残り、wc -m が 1 文字多く数えて上限判定がずれるため。
 frontmatter() {
-  awk 'NR==1 && /^---[[:space:]]*$/ {f=1; next} f && /^---[[:space:]]*$/ {exit} f' "$SKILL_MD"
+  tr -d '\r' < "$SKILL_MD" |
+    awk 'NR==1 && /^---[[:space:]]*$/ {f=1; next} f && /^---[[:space:]]*$/ {exit} f'
 }
 field() { frontmatter | sed -n "s/^$1: *//p" | head -1; }
 
