@@ -1,0 +1,5 @@
+# シェルスクリプトは LF を強制する。
+# Windows の core.autocrlf=true 環境でチェックアウトすると CRLF に変換され、
+# Linux 上（claude.ai の Skill サンドボックス等）で実行したときに
+# `$'\r': command not found` となって動作しないため。
+*.sh text eol=lf
