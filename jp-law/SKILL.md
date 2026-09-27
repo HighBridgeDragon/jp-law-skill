@@ -52,8 +52,8 @@ e-Gov 法令 API から取得する法令本文（`fetch-law.sh` の条文テキ
   ※ 大規模法令は全文取得を避け、elm パラメータで条文単位取得を推奨
 
 「○○法の2020年時点の条文を見せて」
-  → curl -s "https://laws.e-gov.go.jp/api/2/law_data/{law_id}?elm=MainProvision-Article_X&asof=2020-01-01"
-  ※ elm なしの場合: ?asof=2020-01-01 のみ
+  → bash scripts/fetch-law.sh --asof 2020-01-01 {law_id} MainProvision-Article_X
+  ※ 法令全体なら elm を省略: bash scripts/fetch-law.sh --asof 2020-01-01 {law_id}
 ```
 
 ## 各エンドポイントの使い方
@@ -81,7 +81,10 @@ bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_709
 
 # 民法全文（注意: 大量データ）
 bash scripts/fetch-law.sh 129AC0000000089
-# Usage: bash scripts/fetch-law.sh <law_id> [elm]
+
+# 2020-01-01 時点の個人情報保護法第2条（改正前後の比較に使う）
+bash scripts/fetch-law.sh --asof 2020-01-01 415AC0000000057 MainProvision-Article_2
+# Usage: bash scripts/fetch-law.sh [--max-time SEC] [--asof YYYY-MM-DD] <law_id> [elm]
 ```
 
 **elm パラメータで条文を絞り込む**（ハイフン区切りで階層指定）:
@@ -160,7 +163,7 @@ bash scripts/search-keyword.sh 損害賠償 10
 2. **elm パラメータの条番号**: 枝番号はアンダースコア表記（例: 第398条の22 → `Article_398_22`）
 3. **law_full_text の構造**: JSON詳細版（既定）はtag/attr/childrenの再帰ツリー。テキストはchildrenの末端に文字列として格納される
 4. **キーワード検索のlimit**: `/keyword` の `limit` は法令件数ではなく条文位置数の総和の上限
-5. **日付パラメータ**: `asof` で過去の時点の法令を取得可能（`YYYY-MM-DD` 形式）
+5. **日付パラメータ**: `fetch-law.sh --asof YYYY-MM-DD` で過去の時点の法令を取得可能。取得された版は応答の `revision_info` で確認できる。形式外の日付はスクリプトが usage を返し、実在しない日付は API が `400004` を返す
 6. **法令番号でも検索可能**: `/law_data` のパスパラメータには law_id 以外に法令番号も指定可能
 7. **Base64に注意**: `law_full_text_format` と `response_format` を異なる値にすると `law_full_text` がBase64エンコードで返却される。通常はどちらも既定値（json）のまま使用すること
 
