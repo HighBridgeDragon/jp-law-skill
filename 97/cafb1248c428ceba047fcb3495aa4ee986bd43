@@ -1,0 +1,23 @@
+jp-law/SKILL.md
+  s_0402ea1cdb3d8b::t_a0680e949a56a8 210,213-223
+  s_0402ea1cdb3d8b::t_ce4602b850cec1 6
+  s_0402ea1cdb3d8b::t_f3129e8ebf319c 224
+jp-law/scripts/README.md
+  s_0402ea1cdb3d8b::t_ce4602b850cec1 6-24,185
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "97cafb1248c428ceba047fcb3495aa4ee986bd43",
+  "prompts": {},
+  "sessions": {
+    "s_0402ea1cdb3d8b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cbb4de1-82be-4a1d-99db-8b13c97ac605",
+        "model": "unknown"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
