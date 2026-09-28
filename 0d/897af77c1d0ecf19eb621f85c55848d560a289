@@ -1,0 +1,23 @@
+jp-law/scripts/lib/law-text.sh
+  s_582088328ea8f0::t_ad31814e3b2a0a 45-46
+  s_582088328ea8f0::t_6e3d1e746079af 1-44,47-116
+tests/test-law-text.sh
+  s_582088328ea8f0::t_c003b6a5646b90 1-60,64-73
+  s_582088328ea8f0::t_9ccdf2ef1da2b1 61-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0d897af77c1d0ecf19eb621f85c55848d560a289",
+  "prompts": {},
+  "sessions": {
+    "s_582088328ea8f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "259d0873-f00e-41b1-bb3b-8919c7cdf85a",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
