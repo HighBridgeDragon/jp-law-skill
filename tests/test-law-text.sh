@@ -64,6 +64,11 @@ JSON='{"law_full_text":{"tag":"Sentence","attr":{},"children":["引用符 \" と
 assert_eq "エスケープの復元" '引用符 " と逆斜線 \ を含む文' \
   "$(printf '%s' "$JSON" | law_full_text_to_text)"
 
+# 8. 逆斜線に文字 n が続く本文（JSON 上は \\n）を改行に化けさせない
+JSON='{"law_full_text":{"tag":"Sentence","attr":{},"children":["逆斜線と文字 \\n が並ぶ場合"]}}'
+assert_eq "逆斜線＋n を改行にしない" '逆斜線と文字 \n が並ぶ場合' \
+  "$(printf '%s' "$JSON" | law_full_text_to_text)"
+
 echo ""
 if [ "$FAILED" -eq 0 ]; then
   echo "全テスト成功"
