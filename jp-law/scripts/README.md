@@ -3,6 +3,25 @@
 このディレクトリには、e-Gov法令API V2を呼び出すためのシェルスクリプトと、
 法令ID検証用のユーティリティスクリプトが含まれています。
 
+## 出典 URL の出力
+
+API 呼び出しスクリプト 4 本（`fetch-law.sh` / `fetch-revisions.sh` / `search-laws.sh` /
+`search-keyword.sh`）は、e-Gov の出典 URL を **stderr に** 出力する。
+URL は `law_id` から機械的に決まるため、LLM に組み立てさせずスクリプト側で生成する。
+
+- stdout は raw JSON のまま。出典 URL を混ぜないのは、JSON エンコードが指示／データ境界だから
+- URL は法令単位。e-Gov Web UI の条文アンカーは章番号を含む（例: `#Mp-Ch_1-At_2`）ため、
+  API の `elm` 値（`MainProvision-Article_2`）からは機械生成できない
+- `--asof` 指定時も URL は現行版のページを指す。その旨は出力行の注記に含まれる
+
+```console
+$ bash scripts/search-laws.sh 個人情報保護 2 > /dev/null
+【出典】e-Gov法令検索 https://laws.e-gov.go.jp/law/413R00000001003
+【出典】e-Gov法令検索 https://laws.e-gov.go.jp/law/415AC0000000057
+```
+
+生成処理は `lib/source-url.sh`。自己検査は `bash tests/test-source-url.sh`（リポジトリ直下）。
+
 ## API呼び出しスクリプト
 
 ### fetch-law.sh
@@ -163,7 +182,7 @@ bash scripts/extract-law-ids.sh
 
 - **bash**: シェルスクリプト実行環境
 - **curl**: HTTP通信（API呼び出しスクリプトのみ）
-- **grep, sed**: テキスト処理
+- **grep, sed, awk**: テキスト処理
 - **インターネット接続**: API呼び出しスクリプトと検証スクリプトのみ
 
 ## 関連ドキュメント

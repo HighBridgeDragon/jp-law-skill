@@ -3,7 +3,7 @@ name: jp-law
 description: Search and retrieve Japanese laws and regulations via the official e-Gov Law API V2 (no auth required). Supports law name search, article retrieval, amendment history, and full-text keyword search. Useful for legal research, compliance checks, contract review, and any task involving Japanese statutes (民法/Civil Code, 会社法/Companies Act, 個人情報保護法/APPI, 労働基準法/Labor Standards Act, etc.). 日本の法令をe-Gov法令API V2経由で検索・取得するスキル。法令名検索、条文取得、改正履歴、キーワード検索に対応。Use this skill when researching Japanese laws, regulations, or legal texts.
 license: MIT
 metadata:
-  version: "1.2.1"
+  version: "1.3.0"
 ---
 
 # e-Gov 法令調査スキル
@@ -207,8 +207,20 @@ e-Gov 法令 API が扱うのは国の法令（`law_type`: 憲法 / 法律 / 政
 【内容】
 条文テキストをここに記載
 
-【出典】e-Gov法令検索 https://laws.e-gov.go.jp/law/XXXXX
+【出典】スクリプトが stderr に出した【出典】行をそのまま転記する
 ```
+
+**出典 URL は組み立てないこと。** 各スクリプトは実行のたびに出典 URL を stderr へ出力する。
+提示する URL はその行をそのまま転記する（法令単位の URL であり、条文アンカーは含まない）。
+
+```console
+$ bash scripts/fetch-law.sh 129AC0000000089 MainProvision-Article_709
+{...raw JSON...}
+【出典】e-Gov法令検索 https://laws.e-gov.go.jp/law/129AC0000000089（URL は法令全体を指す。要求した条項: MainProvision-Article_709）
+```
+
+`--asof` を指定した場合、stdout の JSON はその時点の版だが URL は現行版のページを指す。
+その注記も【出典】行に含まれるため、行ごと転記する。
 
 改正履歴を提示する場合:
 
