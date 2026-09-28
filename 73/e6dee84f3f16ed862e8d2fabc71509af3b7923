@@ -1,0 +1,26 @@
+jp-law/scripts/fetch-revisions.sh
+  s_0402ea1cdb3d8b::t_5c7bb0664674c4 8-9,32-33,35-36
+jp-law/scripts/fetch-law.sh
+  s_0402ea1cdb3d8b::t_5c7bb0664674c4 13-14,62-63,65-69,73,77
+  s_0402ea1cdb3d8b::t_8bb37e7b01d444 70-72,74-76
+jp-law/scripts/search-laws.sh
+  s_0402ea1cdb3d8b::t_3f447411b31a78 34,37-42
+jp-law/scripts/search-keyword.sh
+  s_0402ea1cdb3d8b::t_3f447411b31a78 37,40-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "73e6dee84f3f16ed862e8d2fabc71509af3b7923",
+  "prompts": {},
+  "sessions": {
+    "s_0402ea1cdb3d8b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cbb4de1-82be-4a1d-99db-8b13c97ac605",
+        "model": "unknown"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
