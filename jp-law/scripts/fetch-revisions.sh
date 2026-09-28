@@ -5,6 +5,8 @@ set -e
 # Usage: bash scripts/fetch-revisions.sh [--max-time SEC] <law_id>
 # Example: bash scripts/fetch-revisions.sh 129AC0000000089
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 MAX_TIME=30
 
 while [ $# -gt 0 ]; do
@@ -27,4 +29,8 @@ if [ -z "$LAW_ID" ]; then
   exit 1
 fi
 
+source "$SCRIPT_DIR/lib/source-url.sh"
+
 curl -s --max-time "$MAX_TIME" --connect-timeout 10 "https://laws.e-gov.go.jp/api/2/law_revisions/${LAW_ID}"
+
+emit_source_url "$LAW_ID"
