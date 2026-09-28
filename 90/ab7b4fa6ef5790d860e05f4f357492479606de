@@ -1,0 +1,21 @@
+.github/release-notes.md
+  s_81204cf01ea7a5::t_c58cc480eb8186 13-14
+README.md
+  s_81204cf01ea7a5::t_c58cc480eb8186 23-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "90ab7b4fa6ef5790d860e05f4f357492479606de",
+  "prompts": {},
+  "sessions": {
+    "s_81204cf01ea7a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "079c423e-c058-43de-8a6f-188ac3fe3dd0",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
