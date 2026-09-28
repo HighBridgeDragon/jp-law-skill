@@ -10,6 +10,8 @@ set -e
 # 出力は raw JSON（JSON エンコードが指示/データ境界）。詳細は SKILL.md セキュリティ節を参照。
 
 USAGE="Usage: bash scripts/fetch-law.sh [--max-time SEC] [--asof YYYY-MM-DD] <law_id> [elm]"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 MAX_TIME=30
 ASOF=""
 
@@ -57,4 +59,19 @@ fi
 
 URL="https://laws.e-gov.go.jp/api/2/law_data/${LAW_ID}${QUERY:+?${QUERY}}"
 
+source "$SCRIPT_DIR/lib/source-url.sh"
+
 curl -s --max-time "$MAX_TIME" --connect-timeout 10 "$URL"
+
+# 出典 URL はスクリプトが出す。SKILL.md はこれをそのまま転記する（LLM に組み立てさせない）
+NOTE=""
+# e-Gov の Web UI が持つ条文アンカーは章番号を含む（例: #Mp-Ch_1-At_2）ため、
+# API の elm 値（MainProvision-Article_2）からは機械生成できない。法令単位の URL に留める
+if [ -n "$ELM" ]; then
+  NOTE="URL は法令全体を指す。要求した条項: ${ELM}"
+fi
+# asof で過去の版を取得しても、URL は現行版のページを指す
+if [ -n "$ASOF" ]; then
+  NOTE="${NOTE:+${NOTE}／}URL は現行版を指す。取得した版: asof=${ASOF}"
+fi
+emit_source_url "$LAW_ID" "$NOTE"

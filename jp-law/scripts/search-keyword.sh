@@ -34,6 +34,12 @@ if [ -z "$KEYWORD" ]; then
 fi
 
 source "$SCRIPT_DIR/lib/urlencode.sh"
+source "$SCRIPT_DIR/lib/source-url.sh"
 
 ENCODED=$(urlencode "$KEYWORD")
-curl -s --max-time "$MAX_TIME" --connect-timeout 10 "https://laws.e-gov.go.jp/api/2/keyword?keyword=${ENCODED}&limit=${LIMIT}"
+# 出典 URL を応答から生成するため、パイプせずいったん受け取る
+RESPONSE=$(curl -s --max-time "$MAX_TIME" --connect-timeout 10 "https://laws.e-gov.go.jp/api/2/keyword?keyword=${ENCODED}&limit=${LIMIT}")
+printf '%s\n' "$RESPONSE"
+
+# 出典 URL はスクリプトが出す。SKILL.md はこれをそのまま転記する（LLM に組み立てさせない）
+emit_source_urls_from_json "$RESPONSE"
