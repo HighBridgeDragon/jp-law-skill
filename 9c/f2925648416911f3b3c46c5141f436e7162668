@@ -1,0 +1,21 @@
+tests/test-source-url.sh
+  s_0402ea1cdb3d8b::t_ef31447735096c 1-66
+jp-law/scripts/lib/source-url.sh
+  s_0402ea1cdb3d8b::t_e870ffe4c243a8 1-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9cf2925648416911f3b3c46c5141f436e7162668",
+  "prompts": {},
+  "sessions": {
+    "s_0402ea1cdb3d8b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8cbb4de1-82be-4a1d-99db-8b13c97ac605",
+        "model": "unknown"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
