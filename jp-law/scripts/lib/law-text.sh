@@ -18,7 +18,7 @@ law_full_text_to_text() {
     RS = "\""
     # 行を改めて始めるタグ（見出し・条名・項番号・号番号など）
     split("LawNum LawTitle EnactStatement TOCLabel TOCPart TOCChapter TOCSection " \
-          "TOCSubsection TOCDivision TOCArticle TOCSupplProvision TOCAppdxTableLabel " \
+          "TOCSubsection TOCDivision TOCSupplProvision " \
           "PartTitle ChapterTitle SectionTitle SubsectionTitle DivisionTitle " \
           "ArticleCaption ArticleTitle ParagraphCaption ParagraphNum ItemTitle " \
           "Subitem1Title Subitem2Title Subitem3Title Subitem4Title SupplProvisionLabel " \
@@ -29,6 +29,7 @@ law_full_text_to_text() {
     split("ArticleTitle ParagraphNum ItemTitle Subitem1Title Subitem2Title " \
           "Subitem3Title Subitem4Title RelatedArticleNum RemarksLabel TableColumn", ttl, " ")
     for (i in ttl) TITLE[ttl[i]] = 1
+    SENTINEL = sprintf("%c", 1)
     lvl = 0; ftlvl = -1; active = 0; skiplvl = -1; ftpending = 0
     instr = 0; havestr = 0; pend = 0; out = 0; prevc = ""
   }
@@ -42,8 +43,13 @@ law_full_text_to_text() {
 
   function unesc(s) {
     if (index(s, "\\") == 0) return s
+    # 逆斜線自身のエスケープを番兵へ退避してから他を戻す。順に置き換えると、逆斜線に
+    # 文字 n が続く本文（JSON 上は 逆斜線 逆斜線 n）が改行に化けるため。
+    # 番兵は制御文字 U+0001。JSON の文字列に生の制御文字は現れないため衝突しない
+    gsub(/\\\\/, SENTINEL, s)
     gsub(/\\n/, "\n", s); gsub(/\\t/, "\t", s); gsub(/\\r/, "", s)
-    gsub(/\\"/, "\"", s); gsub(/\\\//, "/", s); gsub(/\\\\/, "\\", s)
+    gsub(/\\"/, "\"", s); gsub(/\\\//, "/", s)
+    gsub(SENTINEL, "\\", s)
     # ponytail: \uXXXX は e-Gov が返さないため素通し。返すようになったら変換を足す
     return s
   }
@@ -90,7 +96,6 @@ law_full_text_to_text() {
       } else if (c == "}" || c == "]") {
         endlvl = lvl; t = TAG[endlvl]
         if (active && out && TITLE[t]) pend = 1
-        TAG[endlvl] = ""; lastkey[endlvl] = ""
         lvl--
         if (skiplvl == endlvl) skiplvl = -1
         if (ftlvl >= 0 && lvl < ftlvl) active = 0
