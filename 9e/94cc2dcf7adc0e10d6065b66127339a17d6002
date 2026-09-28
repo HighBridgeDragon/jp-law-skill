@@ -1,0 +1,22 @@
+jp-law/scripts/fetch-law.sh
+  s_582088328ea8f0::t_2874af20bf423b 5,8,11-12,14
+  s_582088328ea8f0::t_a099abc823d4d8 19
+  s_582088328ea8f0::t_121dd4cff1044a 39-42
+  s_582088328ea8f0::t_bdaec57ab0891c 71-84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9e94cc2dcf7adc0e10d6065b66127339a17d6002",
+  "prompts": {},
+  "sessions": {
+    "s_582088328ea8f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "259d0873-f00e-41b1-bb3b-8919c7cdf85a",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
