@@ -12,10 +12,10 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 本 Release に添付の `jp-law.zip` をダウンロードして導入します。
 
-- **claude.ai / Claude Desktop**: Settings > Features から `jp-law.zip` をアップロードします（アップロードできるのは本 Release 添付の zip のみです。Code > Download ZIP の zip は構造が異なるため使えません）。
-- **ChatGPT Desktop / Goose Desktop ほか**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に展開して配置します（展開後の `jp-law/` フォルダ直下に `SKILL.md` がある状態で配置し、二重フォルダにならないようご注意ください）。
+- **claude.ai / Claude Desktop**: Settings > Capabilities から `jp-law.zip` をアップロードします（アップロードできるのは本 Release 添付の zip のみです。Code > Download ZIP の zip は構造が異なるため使えません）。
+- **ChatGPT Desktop / Goose ほか**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に展開して配置します（展開後の `jp-law/` フォルダ直下に `SKILL.md` がある状態で配置し、二重フォルダにならないようご注意ください）。
 
-各クライアント別の詳細な導入手順は [インストールガイド (docs/install.md)](docs/install.md) を参照してください。
+各クライアント別の詳細な導入手順は [インストールガイド (docs/install.md)](https://github.com/HighBridgeDragon/jp-law-skill/blob/main/docs/install.md) を参照してください。
 
 ## 主な動作条件
 
@@ -29,4 +29,4 @@ npx skills add HighBridgeDragon/jp-law-skill
 - [Agent Skills (agentskills.io)](https://agentskills.io)
 - [Agent Skills (Anthropic)](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 - [How to create custom Skills (Claude)](https://support.claude.com/en/articles/12512198-creating-custom-skills)
-- [Build skills (OpenAI ChatGPT & Codex)](https://learn.chatgpt.com/docs/build-skills)
+- [Build skills (OpenAI Codex)](https://developers.openai.com/codex/skills/)
