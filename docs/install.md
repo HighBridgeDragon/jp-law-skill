@@ -22,7 +22,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 2. Settings > Capabilities を開き、`jp-law.zip` をアップロードします。
 
 > [!IMPORTANT]
-> アップロードできるのは **Releases に添付された `jp-law.zip`** だけです。GitHub リポジトリ画面の **Code > Download ZIP** で取得した zip は、展開時のルートが `jp-law-skill-main/` になり `SKILL.md` が直下に来ないため、skill として認識されません。
+> 本 Release 添付の `jp-law.zip` は、最上位が `jp-law/` でその直下に `SKILL.md` やスクリプト群が配置された構造になっています。claude.ai / Claude Desktop では展開せず zip のままアップロードしてください。なお、GitHub リポジトリ画面の **Code > Download ZIP** で取得した zip は、ルートが `jp-law-skill-main/` になり構造が異なるため利用できません。
 
 Custom Skill は面をまたいで同期しません。Claude Code に導入済みでも、claude.ai では別途アップロードが必要です。
 
@@ -40,19 +40,19 @@ zip を導入しても、以下を満たさない環境では動作しません�
 [OpenAI Codex のスキル仕様](https://developers.openai.com/codex/skills/) に準拠した配置手順です。
 
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. 展開された `jp-law` フォルダ（直下に `SKILL.md` があるフォルダ）を、ユーザー共通スキルディレクトリ（`~/.agents/skills/jp-law`）またはプロジェクト直下の `.agents/skills/jp-law` に配置します（二重フォルダ `jp-law/jp-law/` にならないよう配置パスをご確認ください）。
+2. 展開された `jp-law` フォルダ（直下に `SKILL.md` があるフォルダ）を、ユーザー共通スキルディレクトリ（`~/.agents/skills/` 直下）またはプロジェクトの `.agents/skills/` 直下に配置します（配置後のパス: `~/.agents/skills/jp-law/SKILL.md`。二重フォルダ `jp-law/jp-law/` にならないようご注意ください）。
 
 > [!NOTE]
 > 上記の配置パスは OpenAI Codex 公式ドキュメントに基づく仕様です。ChatGPT Desktop 等におけるローカルスキルの読み込み仕様や対応状況については、OpenAI の公式アナウンスをご確認ください。
 
 ### Goose
 
-Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています。
+Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています（[Goose 公式サイト](https://block.github.io/goose/)）。
 
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. 展開された `jp-law` フォルダを `~/.agents/skills/jp-law` に配置します（`~/.agents/skills/jp-law/SKILL.md` となるように配置してください）。
+2. 展開された `jp-law` フォルダを、ユーザー共通スキルディレクトリ（`~/.agents/skills/` 直下）またはプロジェクトの `.agents/skills/` 直下に配置します（配置後のパス: `~/.agents/skills/jp-law/SKILL.md`）。
 
-Agent Skills 仕様に準拠し、エージェント実行環境から本スキルが参照・実行されます。
+Goose はセッション開始時にこれらのディレクトリからスキルを自動検出し、ローカル環境のシェルを通じてスクリプトを実行します（利用可能なスキルは `goose skills list` コマンドで確認できます）。
 
 ### Google Gemini についての注意
 
@@ -63,7 +63,7 @@ Agent Skills 仕様に準拠し、エージェント実行環境から本スキ�
 
 本スキルは同梱の bash スクリプト（`jp-law/scripts/*.sh`）から `curl` で e-Gov 法令 API V2 を呼び出します。エージェント側で bash および `curl` を実行できる環境が必要です。
 
-### Windows ユーザー向け注意
+### Windows 環境での利用注意
 
 スクリプトは bash で記述されているため、Windows 環境では Git for Windows 付属の Git Bash または WSL（Windows Subsystem for Linux）の利用を推奨します。Claude Code は内部で bash を起動するため追加設定なしで動作します。PowerShell / cmd から直接 `*.sh` を実行することはできません。
 
@@ -73,4 +73,5 @@ Agent Skills 仕様に準拠し、エージェント実行環境から本スキ�
 - [Agent Skills Overview (Anthropic)](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 - [How to create custom Skills (Claude Help)](https://support.claude.com/en/articles/12512198-creating-custom-skills)
 - [Build skills (OpenAI Codex)](https://developers.openai.com/codex/skills/)
+- [Goose (Block)](https://block.github.io/goose/)
 - [e-Gov 法令 API V2 仕様](https://laws.e-gov.go.jp/api/2/swagger-ui)
