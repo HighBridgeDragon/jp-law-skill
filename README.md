@@ -10,13 +10,15 @@ e-Gov 法令 API V2 を活用した日本法令調査スキル（Claude Code / A
 
 ## Install
 
-### Claude Code / Cursor / GitHub Copilot CLI ほか
+### Claude Code / Cursor / GitHub Copilot CLI / Gemini CLI ほか
 
 ```bash
 npx skills add HighBridgeDragon/jp-law-skill
 ```
 
-### claude.ai / Claude Desktop
+### デスクトップ / Web アプリ
+
+#### claude.ai / Claude Desktop
 
 [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードし、Settings > Features からアップロードします。
 
@@ -24,7 +26,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 Custom Skill は面をまたいで同期しません。Claude Code に導入済みでも、claude.ai では別途アップロードが必要です。
 
-#### 動作条件
+##### 動作条件
 
 zip を導入しても、以下を満たさない環境では動作しません。
 
@@ -32,6 +34,14 @@ zip を導入しても、以下を満たさない環境では動作しません�
 - **コード実行**: 有効になっていること。本スキルは同梱の bash スクリプトから API を呼び出します。
 - **ネットワークアクセス**: Skill のサンドボックスから `laws.e-gov.go.jp` へ到達できること。claude.ai のネットワークアクセス設定で通信がブロックされる場合は、許可ドメインに `laws.e-gov.go.jp` を追加する必要があります（これを満たせない環境では Claude Code 経由をご利用ください）。
 - **Claude API 経由では動作しません**: API の Skills サンドボックスはネットワークアクセスを持たないため、原理的に e-Gov 法令 API を呼び出せません。
+
+#### ChatGPT Desktop / Goose Desktop / その他の Agent Skills 対応アプリ
+
+[Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロード・展開し、お使いのクライアントのスキルディレクトリ（例: `~/.agents/skills/jp-law`）に配置します。
+
+- **ChatGPT Desktop**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に配置すると、サイドバーの「Skills」から利用できます。
+- **Goose Desktop**: `~/.agents/skills/jp-law` に配置すると自動認識されます。ローカル環境で直接 bash / curl を実行可能です。
+- **Web版 Gemini についての注意**: Web 版 Gemini（gemini.google.com）の Skills はプロンプトベースの拡張であり、スクリプト実行サンドボックスを持たないため動作しません（Gemini CLI または Google Antigravity をご利用ください）。
 
 ## What it does / 機能
 
@@ -48,22 +58,22 @@ zip を導入しても、以下を満たさない環境では動作しません�
 ## Capabilities / 提供機能
 
 | Capability | Endpoint | 用途 |
-|---|---|---|
+| --- | --- | --- |
 | Law name search / 法令名検索 | `GET /laws` | 法令名から law_id を特定（既定 100 件/req） |
 | Article retrieval / 条文取得 | `GET /law_data` | 法令本文または特定条文を取得。`elm` で条文単位、`asof` で時点指定可 |
 | Amendment history / 改正履歴 | `GET /law_revisions` | 法令の改正履歴と各時点の law_revision_id を取得 |
 | Full-text keyword search / キーワード検索 | `GET /keyword` | 全法令本文の横断検索（既定 100、最大 1000 件/req、AND/OR/NOT・ワイルドカード対応） |
 
-Supported agents / 対応エージェント: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), GitHub Copilot (Copilot CLI), Cursor, Cline, Claude Desktop, and any other [Agent Skills](https://agentskills.io)-compatible runtime.
+Supported agents / 対応エージェント: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), GitHub Copilot (Copilot CLI), Cursor, Cline, Claude Desktop / claude.ai, ChatGPT Desktop, Goose, Gemini CLI, Google Antigravity, and any other [Agent Skills](https://agentskills.io)-compatible runtime.
 
 ## 依存
 
 本スキルは同梱の bash スクリプト（`jp-law/scripts/*.sh`）から `curl` で API を呼び出します。エージェント側で bash を実行できれば動作します:
 
 | エージェント | 推奨実行手段 |
-|---|---|
+| --- | --- |
 | Claude Code | 標準同梱の `Bash` ツール（追加セットアップ不要） |
-| GitHub Copilot CLI / Cursor / Cline / Claude Desktop | エージェントのシェル実行機能（または bash 実行可能な MCP サーバ） |
+| GitHub Copilot CLI / Cursor / Cline / Claude Desktop / Goose Desktop / Gemini CLI | エージェントのシェル実行機能（または bash 実行可能な MCP サーバ） |
 | その他 | 任意のシェル統合 |
 
 ### Windows ユーザー向け注意
