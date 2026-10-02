@@ -1,0 +1,17 @@
+.github/release-notes.md
+  h_f91a6a8a277de2 3,9-11,19,28-35,38-41
+README.md
+  h_f91a6a8a277de2 13,19-21,29,38-45,67,76
+  h_f91a6a8a277de2 61,74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "66d91d6983eee39d0f0a38cdd9fc2fbee1cfb190",
+  "prompts": {},
+  "humans": {
+    "h_f91a6a8a277de2": {
+      "author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
