@@ -4,44 +4,26 @@
 
 **Search and retrieve Japanese laws and regulations from the official e-Gov Law API V2.** An [Agent Skill](https://agentskills.io) for Claude Code, Cursor, GitHub Copilot, and other compatible AI agents. No authentication required.
 
-e-Gov 法令 API V2 を活用した日本法令調査スキル（Claude Code / AI Agent 向け）。法令名検索、条文取得、改正履歴、キーワード検索、過去時点の条文取得を AI エージェントから直接実行できます。
+e-Gov 法令 API V2 を活用した日本法令調査スキル（AI エージェント向け）。法令名検索、条文取得、改正履歴、キーワード検索、過去時点の条文取得を AI エージェントから直接実行できます。
 
 姉妹スキル: 国会審議の調査は [jp-diet-minutes-skill](https://github.com/HighBridgeDragon/jp-diet-minutes-skill) を併用すると、法令と国会審議を行き来する調査が可能になります。
 
 ## Install
 
-### Claude Code / Cursor / GitHub Copilot CLI / Gemini CLI ほか
+### CLI / パッケージマネージャ
 
 ```bash
 npx skills add HighBridgeDragon/jp-law-skill
 ```
 
-### デスクトップ / Web アプリ
+### デスクトップ / Web アプリ（zip 導入）
 
-#### claude.ai / Claude Desktop
+[Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして導入します。
 
-[Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードし、Settings > Features からアップロードします。
+- **claude.ai / Claude Desktop**: Settings > Features からアップロード
+- **ChatGPT Desktop / Goose Desktop ほか**: `~/.agents/skills/jp-law` に展開して配置
 
-アップロードできるのは **Releases に添付された `jp-law.zip`** だけです。リポジトリ画面の **Code > Download ZIP** で取得した zip は、展開時のトップが `jp-law-skill-main/` になり `SKILL.md` が直下に来ないため、skill として認識されません。
-
-Custom Skill は面をまたいで同期しません。Claude Code に導入済みでも、claude.ai では別途アップロードが必要です。
-
-##### 動作条件
-
-zip を導入しても、以下を満たさない環境では動作しません。
-
-- **プラン**: Pro / Max / Team / Enterprise のいずれかであること。
-- **コード実行**: 有効になっていること。本スキルは同梱の bash スクリプトから API を呼び出します。
-- **ネットワークアクセス**: Skill のサンドボックスから `laws.e-gov.go.jp` へ到達できること。claude.ai のネットワークアクセス設定で通信がブロックされる場合は、許可ドメインに `laws.e-gov.go.jp` を追加する必要があります（これを満たせない環境では Claude Code 経由をご利用ください）。
-- **Claude API 経由では動作しません**: API の Skills サンドボックスはネットワークアクセスを持たないため、原理的に e-Gov 法令 API を呼び出せません。
-
-#### ChatGPT Desktop / Goose Desktop / その他の Agent Skills 対応アプリ
-
-[Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロード・展開し、お使いのクライアントのスキルディレクトリ（例: `~/.agents/skills/jp-law`）に配置します。
-
-- **ChatGPT Desktop**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に配置すると、サイドバーの「Skills」から利用できます。
-- **Goose Desktop**: `~/.agents/skills/jp-law` に配置すると自動認識されます。ローカル環境で直接 bash / curl を実行可能です。
-- **Web版 Gemini についての注意**: Web 版 Gemini（gemini.google.com）の Skills はプロンプトベースの拡張であり、スクリプト実行サンドボックスを持たないため動作しません（Gemini CLI または Google Antigravity をご利用ください）。
+各クライアント別の詳細な導入手順や動作条件（ネットワーク設定・スクリプト実行環境等）は [docs/install.md](docs/install.md) を参照してください。
 
 ## What it does / 機能
 

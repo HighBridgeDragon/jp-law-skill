@@ -1,37 +1,27 @@
 # 導入方法
 
-## Claude Code / Cursor / GitHub Copilot CLI / Gemini CLI ほか
+## CLI / パッケージマネージャ
+
+対応クライアント: Claude Code, Cursor, GitHub Copilot CLI, Gemini CLI ほか
 
 ```bash
 npx skills add HighBridgeDragon/jp-law-skill
 ```
 
-## デスクトップ / Web アプリ
+## デスクトップ / Web アプリ（zip 導入）
 
-### claude.ai / Claude Desktop
+本 Release に添付の `jp-law.zip` をダウンロードして導入します。
 
-本 Release に添付の `jp-law.zip` をダウンロードし、Settings > Features からアップロードします。
+- **claude.ai / Claude Desktop**: Settings > Features から `jp-law.zip` をアップロードします（アップロードできるのは本 Release 添付の zip のみです）。
+- **ChatGPT Desktop / Goose Desktop ほか**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に展開して配置します。
 
-アップロードできるのは本 Release に添付された `jp-law.zip` だけです。リポジトリ画面の **Code > Download ZIP** で取得した zip は、展開時のトップが `jp-law-skill-main/` になるため使えません。
+各クライアント別の詳細な導入手順や動作条件（ネットワーク設定・スクリプト実行環境等）は [インストールガイド (docs/install.md)](https://github.com/HighBridgeDragon/jp-law-skill/blob/main/docs/install.md) を参照してください。
 
-Custom Skill は面をまたいで同期しません。Claude Code に導入済みでも、claude.ai では別途アップロードが必要です。
+## 主な動作条件
 
-#### 動作条件
-
-`jp-law.zip` を導入しても、以下を満たさない環境では動作しません。
-
-- **プラン**: Pro / Max / Team / Enterprise のいずれかであること。
-- **コード実行**: 有効になっていること。本スキルは同梱の bash スクリプトから API を呼び出します。
-- **ネットワークアクセス**: Skill のサンドボックスから `laws.e-gov.go.jp` へ到達できること。claude.ai のネットワークアクセス設定で通信がブロックされる場合は、許可ドメインに `laws.e-gov.go.jp` を追加する必要があります（これを満たせない環境では Claude Code 経由をご利用ください）。
-- **Claude API 経由では動作しません**: API の Skills サンドボックスはネットワークアクセスを持たないため、原理的に e-Gov 法令 API を呼び出せません。
-
-### ChatGPT Desktop / Goose Desktop / その他の Agent Skills 対応アプリ
-
-本 Release に添付の `jp-law.zip` をダウンロード・展開し、お使いのクライアントのスキルディレクトリ（例: `~/.agents/skills/jp-law`）に配置します。
-
-- **ChatGPT Desktop**: `~/.agents/skills/jp-law`（またはプロジェクトの `.agents/skills/jp-law`）に配置すると、サイドバーの「Skills」から利用できます。
-- **Goose Desktop**: `~/.agents/skills/jp-law` に配置すると自動認識されます。ローカル環境で直接 bash / curl を実行可能です。
-- **Web版 Gemini についての注意**: Web 版 Gemini（gemini.google.com）の Skills はプロンプトベースの拡張であり、スクリプト実行サンドボックスを持たないため動作しません（Gemini CLI または Google Antigravity をご利用ください）。
+- **スクリプト実行**: 本スキルは同梱の bash スクリプトから API を呼び出すため、各環境でシェル/スクリプト実行が有効である必要があります。
+- **ネットワークアクセス**: サンドボックスや実行環境から `laws.e-gov.go.jp` へ到達できる必要があります。
+- **Web 版 Gemini / Claude API**: シェル実行サンドボックスやネットワークアクセスを持たないため、原理的に動作しません（CLI やデスクトップ版をご利用ください）。
 
 ## 出典
 
