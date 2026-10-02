@@ -37,15 +37,19 @@ zip を導入しても、以下を満たさない環境では動作しません�
 
 ### ChatGPT Desktop
 
+[OpenAI の Agent Skills 仕様](https://learn.chatgpt.com/docs/build-skills) に準拠した配置手順です。
+
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. 展開したフォルダを、ユーザー共通スキルディレクトリ（`~/.agents/skills/jp-law`）または作業プロジェクトの `.agents/skills/jp-law` に配置します。
-3. ChatGPT Desktop アプリのサイドバーにある「Skills」から本スキルが認識され、チャット上で利用可能になります。
+2. 展開された `jp-law` フォルダ（直下に `SKILL.md` があるフォルダ）を、ユーザー共通スキルディレクトリ（`~/.agents/skills/jp-law`）または作業プロジェクトの `.agents/skills/jp-law` に配置します（二重フォルダ `jp-law/jp-law/` にならないよう配置パスをご確認ください）。
+3. [ChatGPT Desktop の仕様](https://learn.chatgpt.com/docs/build-skills) に従い、サイドバーの「Skills」やプロンプトから本スキルが利用可能になります。
 
 ### Goose Desktop
 
+Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています。
+
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. `~/.agents/skills/jp-law` に配置します。
-3. Goose Desktop を起動すると自動認識されます。ローカルのシェル環境で直接 bash / curl が実行されます。
+2. 展開された `jp-law` フォルダを `~/.agents/skills/jp-law` に配置します（`~/.agents/skills/jp-law/SKILL.md` となるように配置してください）。
+3. ローカルのシェル環境で直接 bash / curl スクリプトを実行して利用できます。
 
 ### Google Gemini についての注意
 
