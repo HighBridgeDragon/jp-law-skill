@@ -20,8 +20,8 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして導入します。
 
-- **claude.ai / Claude Desktop**: Settings > Features からアップロード（要 Pro 以上のプランおよびネットワーク許可）
-- **ChatGPT Desktop / Goose Desktop ほか**: `~/.agents/skills/jp-law` に展開して配置
+- **claude.ai / Claude Desktop**: Settings > Capabilities からアップロード（要 Pro 以上のプランおよびネットワーク許可。許可ドメインに `laws.e-gov.go.jp` の追加が必要）
+- **ChatGPT Desktop / Goose ほか**: `~/.agents/skills/jp-law` に展開して配置
 
 各クライアント別の詳細な導入手順や動作条件（ネットワーク設定・スクリプト実行環境等）は [docs/install.md](docs/install.md) を参照してください。
 
@@ -46,7 +46,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 | Amendment history / 改正履歴 | `GET /law_revisions` | 法令の改正履歴と各時点の law_revision_id を取得 |
 | Full-text keyword search / キーワード検索 | `GET /keyword` | 全法令本文の横断検索（既定 100、最大 1000 件/req、AND/OR/NOT・ワイルドカード対応） |
 
-Supported agents / 対応エージェント: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), GitHub Copilot (Copilot CLI), Cursor, Cline, Claude Desktop / claude.ai, ChatGPT Desktop, Goose, Gemini CLI, Google Antigravity, and any other [Agent Skills](https://agentskills.io)-compatible runtime.
+Supported agents / 対応エージェント: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), GitHub Copilot (Copilot CLI), Cursor, Cline, claude.ai / Claude Desktop (Custom Skills), ChatGPT Desktop, Goose, Gemini CLI, Google Antigravity, and any other [Agent Skills](https://agentskills.io)-compatible runtime.
 
 ## 依存
 
@@ -55,13 +55,13 @@ Supported agents / 対応エージェント: [Claude Code](https://docs.anthropi
 | エージェント | 推奨実行手段 |
 | --- | --- |
 | Claude Code | 標準同梱の `Bash` ツール（追加セットアップ不要） |
-| claude.ai / Claude Desktop | Custom Skills サンドボックスのコード実行（要 Pro 以上のプラン + ネットワーク許可） |
+| claude.ai / Claude Desktop | Custom Skills サンドボックスのコード実行（要 Pro 以上のプラン + ネットワーク許可: `laws.e-gov.go.jp`） |
 | GitHub Copilot CLI / Cursor / Cline / Goose Desktop / Gemini CLI | エージェントのシェル実行機能（または bash 実行可能な MCP サーバ） |
 | その他 | 任意のシェル統合 |
 
 ### Windows ユーザー向け注意
 
-スクリプトは bash で書かれているため、Windows では Git for Windows 付属の Git Bash か WSL の利用を推奨します。Claude Code は内部で bash を起動するため追加設定なしで動作します。PowerShell / cmd から直接 `*.sh` を実行することはできません。
+スクリプトは bash で書かれています。Windows 環境での Git Bash / WSL 利用や留意事項については [docs/install.md#windows-環境での利用注意](docs/install.md#windows-環境での利用注意) を参照してください。
 
 ## e-Gov 法令 API V2
 
