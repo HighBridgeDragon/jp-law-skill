@@ -22,7 +22,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 2. Settings > Capabilities を開き、`jp-law.zip` をアップロードします。
 
 > [!IMPORTANT]
-> 本 Release 添付の `jp-law.zip` は、最上位が `jp-law/` でその直下に `SKILL.md` やスクリプト群が配置された構造になっています。claude.ai / Claude Desktop では展開せず zip のままアップロードしてください。なお、GitHub リポジトリ画面の **Code > Download ZIP** で取得した zip は、ルートが `jp-law-skill-main/` になり構造が異なるため利用できません。
+> アップロードできるのは **Releases に添付された `jp-law.zip`** だけです。GitHub リポジトリ画面の **Code > Download ZIP** で取得した zip は、展開時のルートが `jp-law-skill-main/`（直下に `jp-law/`）になり `SKILL.md` が直下に来ないため、skill として認識されません。
 
 Custom Skill は面をまたいで同期しません。Claude Code に導入済みでも、claude.ai では別途アップロードが必要です。
 
@@ -50,7 +50,7 @@ zip を導入しても、以下を満たさない環境では動作しません�
 Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています。
 
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. スキルの配置先や読み込み方法については、[Goose 公式ドキュメント](https://block.github.io/goose/) の指示に従ってください。ローカルのシェル環境を通じて同梱スクリプトが実行されます。
+2. スキルの配置先や読み込み方法については、[Goose 公式ドキュメント](https://block.github.io/goose/) の指示に従ってください。なお、同梱スクリプトを実行できるシェル環境が必要です。
 
 ### Google Gemini についての注意
 
