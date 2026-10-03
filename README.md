@@ -21,7 +21,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして導入します。
 
 - **claude.ai / Claude Desktop**: Settings > Capabilities からアップロード（要 Pro 以上のプランおよびネットワーク許可。許可ドメインに `laws.e-gov.go.jp` の追加が必要）
-- **OpenAI Codex / Goose ほか**: `~/.agents/skills/` 直下に展開後の `jp-law` フォルダを配置
+- **OpenAI Codex**: `~/.agents/skills/` 直下に展開後の `jp-law` フォルダを配置
 
 各クライアント別の詳細な導入手順や動作条件（ネットワーク設定・スクリプト実行環境等）は [docs/install.md](docs/install.md) を参照してください。
 
