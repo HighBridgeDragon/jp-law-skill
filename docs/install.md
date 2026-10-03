@@ -47,12 +47,10 @@ zip を導入しても、以下を満たさない環境では動作しません�
 
 ### Goose
 
-Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています（[Goose 公式サイト](https://block.github.io/goose/)）。
+Block 主導のオープンソースエージェント Goose は [Agent Skills オープン標準](https://agentskills.io/clients) に対応しています。
 
 1. [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして展開します。
-2. 展開された `jp-law` フォルダを、ユーザー共通スキルディレクトリ（`~/.agents/skills/` 直下）またはプロジェクトの `.agents/skills/` 直下に配置します（配置後のパス: `~/.agents/skills/jp-law/SKILL.md`）。
-
-Goose はセッション開始時にこれらのディレクトリからスキルを自動検出し、ローカル環境のシェルを通じてスクリプトを実行します（利用可能なスキルは `goose skills list` コマンドで確認できます）。
+2. スキルの配置先や読み込み方法については、[Goose 公式ドキュメント](https://block.github.io/goose/) の指示に従ってください。ローカルのシェル環境を通じて同梱スクリプトが実行されます。
 
 ### Google Gemini についての注意
 
