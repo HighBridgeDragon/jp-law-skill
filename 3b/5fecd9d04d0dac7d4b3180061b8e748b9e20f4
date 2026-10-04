@@ -1,0 +1,14 @@
+README.md
+  h_f91a6a8a277de2 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3b5fecd9d04d0dac7d4b3180061b8e748b9e20f4",
+  "prompts": {},
+  "humans": {
+    "h_f91a6a8a277de2": {
+      "author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
