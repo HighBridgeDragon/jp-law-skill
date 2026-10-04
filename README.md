@@ -20,7 +20,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 [Releases](https://github.com/HighBridgeDragon/jp-law-skill/releases) から `jp-law.zip` をダウンロードして導入します。
 
-- **claude.ai / Claude Desktop**: Customize > Skills からアップロード（コード実行の有効化が必要。`laws.e-gov.go.jp` は既定の許可ドメインに含まれないため、Team / Enterprise の組織オーナーによる許可ドメインへの追加が必要。個人プランには追加の設定が無いため Claude Code 経由をご利用ください）
+- **claude.ai / Claude Desktop**: Skills 設定からアップロード（コード実行の有効化および許可ドメインへの追加が必要。設定手順や条件は [docs/install.md](docs/install.md) を参照。追加できない環境では Claude Code 経由をご利用ください）
 - **OpenAI Codex**: `~/.agents/skills/` 直下に展開後の `jp-law` フォルダを配置
 
 各クライアント別の詳細な導入手順や動作条件（ネットワーク設定・スクリプト実行環境等）は [docs/install.md](docs/install.md) を参照してください。
@@ -55,7 +55,7 @@ Supported agents / 対応エージェント: [Claude Code](https://docs.anthropi
 | エージェント | 推奨実行手段 |
 | --- | --- |
 | Claude Code | 標準同梱の `Bash` ツール（追加セットアップ不要） |
-| claude.ai / Claude Desktop | Custom Skills サンドボックスのコード実行（コード実行の有効化が必要。`laws.e-gov.go.jp` は既定の許可ドメインに含まれないため Team / Enterprise の組織オーナーによる追加が必要） |
+| claude.ai / Claude Desktop | Custom Skills サンドボックスのコード実行（要コード実行および許可ドメイン追加。詳細は[動作条件](docs/install.md#動作条件claudeai--claude-desktop)を参照） |
 | GitHub Copilot CLI / Cursor / Cline / OpenAI Codex / Goose / Gemini CLI | エージェントのシェル実行機能（または bash 実行可能な MCP サーバ） |
 | その他 | 任意のシェル統合 |
 

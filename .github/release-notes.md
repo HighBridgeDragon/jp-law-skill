@@ -12,7 +12,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 本 Release に添付の `jp-law.zip` をダウンロードして導入します。
 
-- **claude.ai / Claude Desktop**: Customize > Skills の「+」→「+ Create skill」→「Upload a skill」から `jp-law.zip` をアップロードします（アップロードできるのは本 Release 添付の zip のみです。Code > Download ZIP の zip はリポジトリ全体を含み構造が異なるため使えません。また、Custom Skill は claude.ai・Claude API・Claude Code の間で同期しません。claude.ai では個別にアップロードが必要です）。
+- **claude.ai / Claude Desktop**: Skills 設定から `jp-law.zip` をアップロードします（アップロードできるのは本 Release 添付の zip のみです。Code > Download ZIP の zip はリポジトリ全体を含み構造が異なるため使えません。また、Custom Skill は面をまたいで同期しないため個別にアップロードが必要です。操作手順詳細は [インストールガイド](https://github.com/HighBridgeDragon/jp-law-skill/blob/main/docs/install.md) を参照）。
 - **OpenAI Codex**: `~/.agents/skills/`（またはプロジェクトの `.agents/skills/`）直下に展開後の `jp-law` フォルダを配置します（配置後のパス: `~/.agents/skills/jp-law/SKILL.md`）。二重フォルダ（`jp-law/jp-law/`）にならないようご注意ください。
 - **Goose ほか対応クライアント**: 各ツールの設定手順に従って配置します（詳細は下記インストールガイドを参照）。
 
@@ -21,8 +21,8 @@ npx skills add HighBridgeDragon/jp-law-skill
 ## 主な動作条件
 
 - **スクリプト実行**: 本スキルは同梱の bash スクリプトから API を呼び出すため、各環境でシェル/スクリプト実行が有効である必要があります。
-- **ネットワークアクセス**: サンドボックスや実行環境から `laws.e-gov.go.jp` へ到達できる必要があります。claude.ai の既定の許可ドメインには含まれないため、Team / Enterprise では組織オーナーが許可ドメインへ `laws.e-gov.go.jp` を追加する必要があります。個人プラン（Free / Pro / Max）には追加の設定が無いため、Claude Code 経由をご利用ください。
-- **claude.ai / Claude Desktop 利用時の要件**: コード実行の有効化が必要です（スキルのアップロード自体は Free / Pro / Max / Team / Enterprise の各プランで可能ですが、e-Gov API の利用には前述のとおり Team / Enterprise での許可ドメイン追加が必要です）。
+- **ネットワークアクセス**: サンドボックスや実行環境から `laws.e-gov.go.jp` へ到達できる必要があります。claude.ai では許可ドメインへの追加が必要となるため、追加できない環境では Claude Code 経由をご利用ください（設定条件の詳細はインストールガイドを参照）。
+- **claude.ai / Claude Desktop 利用時の要件**: コード実行の有効化が必要です（詳細はインストールガイドを参照）。
 - **Web 版 Gemini / Claude API**: シェル実行サンドボックスや外部ネットワークアクセスを持たないため、原理的に動作しません（CLI やデスクトップ版をご利用ください）。
 
 ## 出典
