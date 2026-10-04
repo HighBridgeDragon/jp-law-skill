@@ -22,7 +22,7 @@ npx skills add HighBridgeDragon/jp-law-skill
 
 - **スクリプト実行**: 本スキルは同梱の bash スクリプトから API を呼び出すため、各環境でシェル/スクリプト実行が有効である必要があります。
 - **ネットワークアクセス**: サンドボックスや実行環境から `laws.e-gov.go.jp` へ到達できる必要があります。claude.ai の既定の許可ドメインには含まれないため、Team / Enterprise では組織オーナーが許可ドメインへ `laws.e-gov.go.jp` を追加する必要があります。個人プラン（Free / Pro / Max）には追加の設定が無いため、Claude Code 経由をご利用ください。
-- **claude.ai / Claude Desktop 利用時の要件**: コード実行の有効化が必要です（Free / Pro / Max / Team / Enterprise の各プランで利用できます）。
+- **claude.ai / Claude Desktop 利用時の要件**: コード実行の有効化が必要です（スキルのアップロード自体は Free / Pro / Max / Team / Enterprise の各プランで可能ですが、e-Gov API の利用には前述のとおり Team / Enterprise での許可ドメイン追加が必要です）。
 - **Web 版 Gemini / Claude API**: シェル実行サンドボックスや外部ネットワークアクセスを持たないため、原理的に動作しません（CLI やデスクトップ版をご利用ください）。
 
 ## 出典
