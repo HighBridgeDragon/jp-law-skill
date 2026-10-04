@@ -30,9 +30,9 @@ Custom Skill は claude.ai・Claude API・Claude Code の間で同期しませ�
 
 zip を導入しても、以下を満たさない環境では動作しません。
 
-- **プラン**: Free / Pro / Max / Team / Enterprise のいずれかであること。
+- **プラン**: Free / Pro / Max / Team / Enterprise のいずれかであること（スキルのアップロード自体は全プランで可能ですが、e-Gov API の利用には後述のとおり Team / Enterprise の組織オーナーによる許可ドメイン追加が必要です）。
 - **コード実行**: 有効になっていること。本スキルは同梱の bash スクリプトから API を呼び出します。
-- **ネットワークアクセス**: サンドボックスから `laws.e-gov.go.jp` へ到達できること。claude.ai の既定の許可ドメインはパッケージマネージャー等に限られ、`laws.e-gov.go.jp` は含まれません（[Approved network domains](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude)）。Team / Enterprise では、組織オーナーが Organization settings > Capabilities で許可ドメインに `laws.e-gov.go.jp` を追加する必要があります。個人プラン（Free / Pro / Max）には許可ドメインを追加する設定が無いため、Claude Code 経由をご利用ください。
+- **ネットワークアクセス**: サンドボックスから `laws.e-gov.go.jp` へ到達できること。claude.ai の既定の許可ドメインはパッケージマネージャー等に限られ、`laws.e-gov.go.jp` は含まれません（公式ヘルプ [Create and edit files with Claude](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude) の「Approved network domains」節）。Team / Enterprise では、組織オーナーが Organization settings > Capabilities で許可ドメインに `laws.e-gov.go.jp` を追加する必要があります。個人プラン（Free / Pro / Max）には許可ドメインを追加する設定が無いため、Claude Code 経由をご利用ください。
 - **Claude API 経由**: API の Skills サンドボックスはネットワークアクセスを持たないため、原理的に e-Gov 法令 API を呼び出せません。
 
 ### OpenAI Codex
