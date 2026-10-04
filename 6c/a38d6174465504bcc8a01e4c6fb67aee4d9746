@@ -1,0 +1,20 @@
+.github/workflows/claude-code-review.yml
+  h_f91a6a8a277de2 5-7,10-11,16-17
+.github/workflows/claude.yml
+  h_f91a6a8a277de2 10-13,17,24-25
+.github/workflows/markdown-lint.yml
+  h_f91a6a8a277de2 6-7,9-10
+.github/workflows/release.yml
+  h_f91a6a8a277de2 5,8,12,15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6ca38d6174465504bcc8a01e4c6fb67aee4d9746",
+  "prompts": {},
+  "humans": {
+    "h_f91a6a8a277de2": {
+      "author": "Ryo Takahashi <38057616+HighBridgeDragon@users.noreply.github.com>"
+    }
+  }
+}
