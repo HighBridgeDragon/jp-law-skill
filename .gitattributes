@@ -5,6 +5,6 @@
 *.sh text eol=lf
 
 # GitHub の Code > Download ZIP や Source code (zip) から SKILL.md を除外し、
-# claude.ai への誤アップロード時に早期検知させる（#53）。
-# Releases 添付の jp-law.zip は release.yml 内で zip コマンドにより生成するため影響しない。
+# claude.ai への誤アップロード時に早期検知させる。
+# Releases 添付の zip は release.yml 内で zip コマンドにより生成するため影響しない。
 SKILL.md export-ignore
