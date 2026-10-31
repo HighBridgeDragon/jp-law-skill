@@ -9,7 +9,7 @@ permissions: {}
 
 jobs:
   release:
-    uses: HighBridgeDragon/jp-skills-shared/.github/workflows/reusable-release.yml@21ddeae5df780b952f41bb920ff9d2334f59cf05 # v1.0.3
+    uses: HighBridgeDragon/jp-skills-shared/.github/workflows/reusable-release.yml@21ddeae5a664911871ea8dba45be49888c9d7895 # v1.0.3
     permissions:
       contents: write
     with:
