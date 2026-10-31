@@ -8,7 +8,7 @@ permissions: {}
 
 jobs:
   review:
-    uses: HighBridgeDragon/jp-skills-shared/.github/workflows/reusable-claude-review.yml@v1
+    uses: HighBridgeDragon/jp-skills-shared/.github/workflows/reusable-claude-review.yml@a2bb488c67b7b52a3c89f728fd346ba095534f12 # v1.0.2
     permissions:
       contents: read
       pull-requests: write
